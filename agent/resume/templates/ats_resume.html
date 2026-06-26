@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>{{ p.contact.name }} - Resume</title>
+<style>
+  /* ATS rules: single column, Arial/Helvetica, no tables/images/columns. */
+  @page { size: Letter; margin: 0.75in; }
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11pt;
+    line-height: 1.35;
+    color: #000;
+  }
+  h1 { font-size: 16pt; margin: 0 0 2pt 0; }
+  h2 {
+    font-size: 14pt;
+    margin: 14pt 0 4pt 0;
+    border-bottom: 1px solid #000;
+    padding-bottom: 2pt;
+  }
+  h3 { font-size: 11pt; margin: 8pt 0 0 0; }
+  p { margin: 2pt 0; }
+  ul { margin: 2pt 0 6pt 0; padding-left: 18pt; }
+  li { margin: 1pt 0; }
+  .contact-line { font-size: 11pt; margin-bottom: 2pt; }
+  .meta { font-style: italic; }
+</style>
+</head>
+<body>
+
+  <!-- Contact -->
+  <h1>{{ p.contact.name }}</h1>
+  <p class="contact-line">
+    {% set bits = [p.contact.email, p.contact.phone, p.contact.location,
+                   p.contact.linkedin, p.contact.website] %}
+    {{ bits | select | join('  |  ') }}
+  </p>
+
+  <!-- Summary -->
+  {% if p.summary %}
+  <h2>Summary</h2>
+  <p>{{ p.summary }}</p>
+  {% endif %}
+
+  <!-- Skills -->
+  {% if p.skills %}
+  <h2>Skills</h2>
+  <ul>
+    {% for skill in p.skills %}
+    <li>{{ skill }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <!-- Experience -->
+  {% if p.experience %}
+  <h2>Experience</h2>
+  {% for job in p.experience %}
+  <h3>{{ job.title }}{% if job.company %} - {{ job.company }}{% endif %}</h3>
+  <p class="meta">
+    {{ [job.location, [job.start, job.end] | select | join(' – ')]
+       | select | join('  |  ') }}
+  </p>
+  {% if job.bullets %}
+  <ul>
+    {% for b in job.bullets %}
+    <li>{{ b }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+  <!-- Education -->
+  {% if p.education %}
+  <h2>Education</h2>
+  {% for ed in p.education %}
+  <h3>{{ ed.degree }}{% if ed.field %}, {{ ed.field }}{% endif %}</h3>
+  <p class="meta">
+    {{ [ed.institution, [ed.start, ed.end] | select | join(' – ')]
+       | select | join('  |  ') }}
+  </p>
+  {% if ed.details %}<p>{{ ed.details }}</p>{% endif %}
+  {% endfor %}
+  {% endif %}
+
+  <!-- Certifications -->
+  {% if p.certifications %}
+  <h2>Certifications</h2>
+  <ul>
+    {% for c in p.certifications %}
+    <li>{{ c }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  <!-- Projects -->
+  {% if p.projects %}
+  <h2>Projects</h2>
+  {% for proj in p.projects %}
+  <h3>{{ proj.name }}</h3>
+  {% if proj.description %}<p>{{ proj.description }}</p>{% endif %}
+  {% if proj.bullets %}
+  <ul>
+    {% for b in proj.bullets %}
+    <li>{{ b }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+
+</body>
+</html>
