@@ -1,0 +1,368 @@
+Project: JobHuntAI — Your Persistent Intelligent Job Search Assistant
+
+Concept:
+A multi-session AI job search assistant you set up once by uploading your master resume.
+From that single file the agent extracts your full career profile, learns from past
+applications and interviews, tailors a fresh ATS-safe PDF for every job, and automates
+applications — all in a streaming chat interface. Think of it as a tireless career coach
+that always starts with knowing exactly who you are.
+
+Resume Description:
+"Built JobHuntAI, a multi-session AI job search assistant using LangGraph + Claude API
+with persistent two-tier memory (SQLite + ChromaDB), RAG over personal career documents,
+per-job resume tailoring with ATS-safe PDF export, company-targeted job scraping with
+resume-match ranking, Playwright-powered auto-apply with HITL approval, real-time SSE
+streaming, and end-to-end LangSmith observability."
+
+================================================================================
+REQUIREMENTS
+================================================================================
+
+1. AGENT ORCHESTRATION (LangGraph)
+   - Build the agent as a LangGraph StateGraph with clearly defined nodes:
+     plan -> tool_select -> tool_execute -> synthesize -> respond
+   - Use a ReAct-style loop (Reason + Act) so the agent decides which tools to
+     invoke based on the query
+   - Maintain an in-memory working scratchpad per turn for multi-step reasoning
+   - All graph executions automatically traced to LangSmith via LANGCHAIN_TRACING_V2=true
+   - Tech: langgraph, langchain-core, claude-opus-4-8 via Anthropic SDK, langsmith
+
+2. PERSISTENT LONG-TERM MEMORY (Two-Tier)
+   - Episodic memory: past job search activities per user (applications submitted,
+     interviews completed, rejections, offers) -> SQLite
+   - Semantic memory: career facts extracted from chats (e.g. "user prefers remote roles",
+     "user has 5 years Python experience", "user targets senior IC roles") -> ChromaDB
+   - After each session, the agent auto-summarizes and stores the conversation
+   - On new sessions, agent retrieves top-K relevant memories and injects into system prompt
+   - Tech: sqlite3, chromadb, sentence-transformers (free/local embeddings)
+
+3. SESSION MANAGEMENT
+   - Each conversation gets a unique session_id (UUID) tied to a user_id
+   - Sessions stored in SQLite with metadata: created_at, last_active, title
+   - Agent can list, resume, or delete past sessions
+   - Session message history stored separately from long-term memory
+   - Application tracking: status per job (applied / phone_screen / interview / offer /
+     rejected) stored in SQLite and queryable via chat
+   - Tech: SQLite + FastAPI session CRUD endpoints
+
+4. STREAMING CHAT (SSE)
+   - Backend streams Claude's response token-by-token via Server-Sent Events (SSE)
+   - FastAPI endpoint: POST /chat/stream returns text/event-stream
+   - Frontend renders tokens as they arrive (no waiting for full response)
+   - Streaming also surfaces tool-use events (e.g. "Searching job postings...",
+     "Tailoring your resume...", "Researching the company...")
+   - Tech: fastapi, anthropic SDK streaming, sse-starlette
+
+5. MULTI-TOOL INTEGRATION (minimum 4 tools)
+   - RAG Tool: answer questions from user-uploaded career docs — resume, cover letters,
+     past job descriptions, interview notes (ChromaDB + pypdf)
+   - Company Job Search Tool: accepts company_name + location as inputs, discovers the
+     company's careers page URL (via DuckDuckGo), scrapes or searches that page for open
+     roles, then ranks the top 10 postings by semantic similarity to the user's stored
+     resume using ChromaDB embeddings — returns ranked list with title, URL, match score
+     Input schema: { company_name: str, location: str, max_results: int = 10 }
+     Output schema: [{ rank, title, url, location, snippet, match_score }]
+   - Resume Tailor Tool: given a selected job description URL or text, fetches the full JD,
+     diffs it against the user's master resume, rewrites bullet points and summary to
+     mirror JD keywords, produces a gap analysis (missing skills/keywords), and exports
+     the result as an ATS-safe PDF named <company>_<role>_resume.pdf
+     Input schema: { jd_url: str, user_id: str }
+     Output schema: { pdf_path: str, gap_analysis: [...], keywords_added: [...] }
+   - Company Research Tool: pull public information about a target company
+     (news, Glassdoor ratings, recent layoffs/hiring trends, tech stack) via web search
+   - Auto-Apply Tool: given a job posting URL, uses Playwright to open the application
+     form, detect the ATS platform, auto-fill fields from the user's stored profile,
+     then pauses for HITL approval before submitting
+     Input schema: { job_url: str, user_profile_id: str }
+     Output schema: { status: "filled" | "submitted" | "aborted", fields_filled: [...] }
+   - MCP Tool: connect to Filesystem MCP server (official, free) for reading/writing
+     resume files and cover letter drafts to disk
+   - All tools registered as LangGraph tool nodes with structured input/output schemas
+   - Tool calls visible in streaming output so user sees agent reasoning in real time
+
+6. MASTER RESUME — PRIMARY INPUT & ONBOARDING
+   - The master resume is the required first input to the system. No job search,
+     tailoring, or auto-apply feature is available until a resume is on file.
+   - Accepted formats: PDF or DOCX (max 5 MB)
+   - How it is provided:
+       a. Via the frontend onboarding screen — file picker shown on first login before
+          the chat interface is unlocked
+       b. Via drag-and-drop onto the chat window at any time to update the master resume
+       c. Via API: POST /resume/upload (multipart/form-data, field name: "resume_file")
+   - Ingestion pipeline (runs immediately after upload, progress streamed over SSE):
+       a. Parse raw text: pypdf (PDF) or python-docx (DOCX)
+       b. Claude extracts structured data into a canonical schema:
+            {
+              contact:        { name, email, phone, location, linkedin, github },
+              summary:        str,
+              skills:         [str],
+              experience:     [{ company, title, dates, bullets: [str] }],
+              education:      [{ institution, degree, field, year }],
+              certifications: [str],
+              projects:       [{ name, description, tech_stack: [str] }]
+            }
+       c. Structured data saved to SQLite:
+            resume_profiles(user_id, version, uploaded_at, filename, data_json)
+       d. Raw text chunked (512 tokens, 50-token overlap) + embedded into ChromaDB
+          under namespace "resume:<user_id>" — used for RAG and job-match scoring
+       e. A clean ATS-format master PDF is regenerated from the structured data and
+          saved to resumes/<user_id>/master/master_resume.pdf
+       f. Agent extracts semantic facts into long-term memory (e.g. "has 5 years Python",
+          "located in San Francisco", "targets senior IC roles")
+   - Versioning: uploading a new resume creates a new version row; previous versions
+     retained and queryable via GET /resume/versions — never deleted automatically
+   - Guard: if no resume on file, any chat message triggers:
+       {"type": "onboarding_required", "message": "Please upload your master resume to get started."}
+     and the frontend redirects to the upload screen
+   - Endpoints: POST /resume/upload, GET /resume/current, GET /resume/versions,
+                DELETE /resume/versions/{version_id}
+   - Tech: pypdf, python-docx, anthropic SDK (structured extraction), sse-starlette
+
+7. RESUME TAILORING + ATS PDF GENERATION
+   - Trigger: user says "tailor my resume for #3" or "tailor for <job URL>"
+   - Step 1 — JD fetch + parse:
+       Fetch the full job description text (httpx + BeautifulSoup or cached from search).
+       Claude extracts: required skills, preferred skills, seniority level, role keywords,
+       company values/tone from the JD.
+   - Step 2 — Gap analysis:
+       Diff extracted JD keywords against the user's master resume skills + bullet points.
+       Produce three lists:
+         matched_keywords  : already present in resume
+         missing_required  : required in JD but absent from resume (flagged as gaps)
+         missing_preferred : preferred in JD but absent from resume (optional additions)
+   - Step 3 — Resume rewrite:
+       Claude rewrites:
+         - Professional summary   : mirror JD tone and top 3 keywords
+         - Experience bullets     : inject matched/missing keywords naturally, quantify
+                                    impact where possible, keep bullets under 2 lines
+         - Skills section         : reorder to surface JD-matched skills first
+       Untouched: contact info, education, certifications (factual, not rewritten)
+   - Step 4 — ATS-safe PDF export:
+       Render the tailored resume data through a fixed Jinja2 HTML template designed
+       for ATS compliance:
+         Layout    : single column, no multi-column tables or text boxes
+         Fonts     : Arial or Helvetica, 11pt body, 14pt section headings
+         Margins   : 0.75 inch all sides
+         Text      : all content in <p> / <ul> tags — fully selectable, no images
+         Sections  : Contact | Summary | Skills | Experience | Education |
+                     Certifications | Projects  (standard ATS-recognized headings)
+         Bullets   : plain hyphen (-) or Unicode bullet (•), no custom icons
+         No        : headers/footers, page numbers, graphics, columns, fancy borders
+       Convert HTML → PDF with WeasyPrint.
+       Output filename: <company>_<role>_<YYYYMMDD>_resume.pdf
+       Saved to: resumes/<user_id>/tailored/<filename>
+   - Step 5 — HITL preview:
+       Stream the gap analysis + a plain-text preview of the rewritten summary and
+       top 3 bullet changes as a HITL event before writing the PDF:
+         {"type": "hitl_request", "action": "write_resume", "details": {
+           "gap_analysis": {...}, "preview": "..."
+         }}
+       User approves → PDF written to disk.
+       User edits   → user provides correction text → Claude revises → re-preview.
+       User rejects → no file written.
+   - Tailored PDF path stored in SQLite applications table (tailored_resume_path column)
+     so auto-apply always uploads the correct version for that specific job.
+   - Tech: httpx, beautifulsoup4, anthropic SDK, Jinja2, WeasyPrint
+
+9. COMPANY-TARGETED JOB SEARCH PIPELINE
+   - Step 1 — Careers page discovery:
+       Query DuckDuckGo for "<company_name> careers jobs site:<company_domain>" to find
+       the official careers page URL; fall back to "<company_name> jobs <location>" if
+       domain is unknown.
+   - Step 2 — Job listing scrape:
+       Use httpx + BeautifulSoup to fetch and parse the careers page.
+       If behind JS rendering, fall back to a DuckDuckGo site-scoped search:
+       "site:<careers_url> <location> software engineer" (or role terms from resume).
+       Extract: job title, location, posting URL, short description snippet.
+   - Step 3 — Resume-match ranking:
+       Embed each job snippet with the same sentence-transformers model used for RAG.
+       Compute cosine similarity against the user's stored resume embedding vector.
+       Sort descending; return top 10.
+   - Step 4 — Results surfaced to user:
+       Agent streams ranked results as a markdown table with columns:
+       Rank | Title | Location | Match % | Apply Link
+       User can then say "tailor my resume for #3" to invoke the Resume Tailor Tool.
+   - Inputs accepted via chat: "Find me jobs at Stripe in New York" or
+     "Search Adobe for remote ML roles" — agent parses company + location from natural language.
+   - Tech: httpx, beautifulsoup4, duckduckgo-search, sentence-transformers, chromadb
+
+10. PLAYWRIGHT AUTO-APPLY PIPELINE
+   - Trigger: user says "apply to #3" (from ranked results) or provides a direct job URL
+   - Step 1 — ATS detection:
+       Load the job application URL with Playwright (async, headless Chromium).
+       Detect the ATS platform by inspecting page URL patterns and DOM signatures:
+         Greenhouse  -> greenhouse.io / boards.greenhouse.io
+         Lever       -> jobs.lever.co
+         Workday     -> myworkdayjobs.com
+         Taleo       -> taleo.net
+         ICIMS       -> icims.com
+         Generic     -> fallback field-detection heuristic
+   - Step 2 — Profile data mapping:
+       Load user profile from SQLite: full name, email, phone, address, LinkedIn URL,
+       GitHub URL, years of experience, current title.
+       Load the job-specific tailored resume PDF path from SQLite
+       (applications.tailored_resume_path); fall back to master resume PDF if not yet tailored.
+       Map profile fields to detected form field selectors per ATS platform.
+   - Step 3 — HITL approval (pre-fill):
+       Before touching the form, stream a preview event over SSE:
+         {"type": "hitl_request", "action": "auto_apply", "details": {
+           "company": "...", "role": "...", "fields": {"name": "...", "email": "...", ...}
+         }}
+       Frontend renders a filled-form preview card with Approve / Edit / Reject buttons.
+       Agent waits on POST /chat/approve with decision = "approve" | "edit" | "reject".
+   - Step 4 — Form fill:
+       On approval, Playwright fills each mapped field using page.fill() / page.select_option()
+       / page.set_input_files() for resume upload.
+       Handles multi-page forms by detecting "Next" buttons and paginating.
+       Adds a 1–3 second human-like delay between field interactions.
+   - Step 5 — Final HITL gate (pre-submit):
+       After all fields are filled, take a full-page screenshot and stream it as a
+       base64 data URI in a second HITL event:
+         {"type": "hitl_request", "action": "submit_application", "screenshot": "..."}
+       User reviews the screenshot and approves or aborts.
+   - Step 6 — Submit + track:
+       On final approval, Playwright clicks the Submit button.
+       Waits for confirmation page or success message.
+       Automatically creates/updates the application tracker record:
+         status = "applied", applied_at = now(), url = job_url
+       Streams confirmation event: {"type": "applied", "company": "...", "role": "..."}
+   - Error handling:
+       Captcha detected -> pause, stream {"type": "captcha_blocked"}, ask user to solve manually
+       Login required   -> stream {"type": "login_required", "url": "..."}, abort auto-fill
+       Unknown form     -> fall back to streaming the application URL for manual apply
+   - Tech: playwright (async API), playwright-stealth (reduces bot detection),
+           Pillow (screenshot encoding)
+
+11. RAG PIPELINE
+   - User uploads documents via POST /documents/upload endpoint
+   - Supported types: PDF resume, plain-text job descriptions, markdown interview notes
+   - Documents chunked (512 tokens, 50-token overlap), embedded with
+     sentence-transformers/all-MiniLM-L6-v2 (local, free), stored in ChromaDB
+   - RAG tool performs semantic search -> top-3 chunks injected into Claude's context
+   - Documents namespaced per user so retrieval is user-scoped
+
+12. HUMAN-IN-THE-LOOP (HITL)
+   - For high-stakes actions the agent pauses and sends an approval event over SSE:
+     {"type": "hitl_request", "action": "<action>", "details": {...}}
+   - HITL gates in the system:
+       write_resume       -> gap analysis + plain-text preview before tailored PDF is written
+       auto_apply         -> pre-fill field preview before Playwright touches the form
+       submit_application -> full-page screenshot review before final form submission
+       send_followup      -> draft email preview before sending a follow-up
+   - Frontend renders Approve / Edit / Reject buttons with a preview of the content
+     (form field table for auto_apply, base64 screenshot for submit_application)
+   - Agent resumes or aborts based on user response via POST /chat/approve
+   - Tech: LangGraph interrupt() node + POST /chat/approve endpoint
+
+13. JOB APPLICATION TRACKER
+   - SQLite table: applications(id, user_id, company, role, url, status, applied_at,
+     notes, next_action, next_action_date)
+   - Agent can add, update, list, and filter applications via natural language
+     ("What interviews do I have this week?", "Mark Stripe as rejected")
+   - Dashboard endpoint: GET /applications returns JSON for frontend table rendering
+   - Reminder logic: agent surfaces upcoming next_action_date items at session start
+
+14. OBSERVABILITY (LangSmith)
+   - Every agent run is traced end-to-end in LangSmith automatically via the
+     LangChain/LangGraph integration — no manual instrumentation needed beyond
+     setting three environment variables:
+       LANGCHAIN_TRACING_V2=true
+       LANGCHAIN_API_KEY=<your_langsmith_key>
+       LANGCHAIN_PROJECT=jobhuntai
+   - What is captured per trace:
+       LLM calls     : prompt, completion, model, token counts, latency, cost estimate
+       Graph nodes   : each LangGraph node (plan, tool_select, tool_execute, synthesize,
+                       respond) shown as a span with input/output state
+       Tool calls    : tool name, input args, raw output, execution time
+       HITL events   : interrupt() calls logged as spans with decision outcome
+       Memory ops    : ChromaDB retrieval queries + returned chunks logged as spans
+       Errors        : exceptions with full stack trace attached to the failed span
+   - Custom metadata tagged on every run:
+       user_id, session_id, run_type (chat | auto_apply | resume_tailor | job_search)
+   - User feedback captured in LangSmith:
+       After each response the frontend sends thumbs-up / thumbs-down via
+       POST /feedback  ->  langsmith_client.create_feedback(run_id, score)
+       Enables dataset curation from real usage for future evaluation
+   - Datasets + evaluation:
+       Collect production traces into a LangSmith dataset named "jobhuntai-evals"
+       Run evaluators on resume tailoring quality and job-match ranking accuracy
+       Endpoint: GET /admin/traces proxies to LangSmith run list for quick debugging
+   - Environment config in .env file (never committed):
+       LANGCHAIN_TRACING_V2, LANGCHAIN_API_KEY, LANGCHAIN_PROJECT, LANGCHAIN_ENDPOINT
+   - Tech: langsmith (pip), python-dotenv
+
+================================================================================
+TECH STACK
+================================================================================
+
+Backend:     Python 3.11+, FastAPI, LangGraph, LangChain
+LLM:         Claude Opus 4.8 (Anthropic SDK, streaming)
+Observability: LangSmith (tracing, feedback, datasets), python-dotenv
+Memory DB:   SQLite (sessions + episodic + application tracker), ChromaDB (semantic + RAG)
+Embeddings:  sentence-transformers (local, free)
+Tools:       Company careers page scraper (httpx + BeautifulSoup), resume-match ranker,
+             resume tailor + ATS PDF export, company research (DuckDuckGo),
+             Playwright auto-apply, Filesystem MCP server
+PDF:         WeasyPrint (HTML→PDF), Jinja2 (ATS resume template), pypdf, python-docx
+Browser:     playwright (async Chromium), playwright-stealth, Pillow
+Streaming:   SSE via sse-starlette
+Frontend:    Gradio or plain HTML + JS EventSource
+
+================================================================================
+PROJECT STRUCTURE
+================================================================================
+
+job-hunt-agent/
+├── agent/
+│   ├── graph.py          # LangGraph StateGraph definition
+│   ├── tools/
+│   │   ├── rag.py                 # RAG over career docs
+│   │   ├── company_job_search.py  # Careers page discovery, scrape, resume-match rank
+│   │   ├── resume_tailor.py       # JD fetch, gap analysis, rewrite, ATS PDF export
+│   │   ├── auto_apply.py          # Playwright ATS detection, form fill, submit
+│   │   ├── company_research.py    # Company news + Glassdoor data
+│   │   └── mcp_fs.py              # Filesystem MCP tool wrapper
+│   │
+│   ├── resume/
+│   │   ├── ingestion.py           # PDF/DOCX parse + Claude structured extraction
+│   │   ├── tailoring.py           # Gap analysis + Claude bullet rewrite logic
+│   │   ├── pdf_generator.py       # Jinja2 render + WeasyPrint HTML→PDF conversion
+│   │   └── templates/
+│   │       └── ats_resume.html    # Single-column ATS-safe Jinja2 HTML template
+│   │
+│   ├── playwright/
+│   │   ├── ats_detector.py        # ATS platform fingerprinting
+│   │   ├── form_filler.py         # Per-ATS field mapping + fill logic
+│   │   └── field_maps/
+│   │       ├── greenhouse.py      # Greenhouse field selectors
+│   │       ├── lever.py           # Lever field selectors
+│   │       ├── workday.py         # Workday field selectors
+│   │       └── generic.py         # Heuristic fallback selectors
+│   └── memory.py                  # Long-term memory read/write
+│
+├── api/
+│   ├── chat.py           # /chat/stream SSE endpoint
+│   ├── sessions.py       # Session CRUD
+│   ├── resume.py         # POST /resume/upload, GET /resume/current, GET /resume/versions
+│   ├── documents.py      # Document upload + ingestion (non-resume career docs)
+│   └── applications.py   # Job application tracker CRUD
+│
+├── db/
+│   ├── sqlite.py         # Session/episodic/application/resume_profiles storage
+│   └── chroma.py         # Vector store wrapper
+│
+├── observability/
+│   └── langsmith.py      # LangSmith client init, run metadata tagging, feedback helper
+│
+├── .env.example          # LANGCHAIN_TRACING_V2, LANGCHAIN_API_KEY, LANGCHAIN_PROJECT,
+│                         # ANTHROPIC_API_KEY — template committed, actual .env gitignored
+│
+├── resumes/
+│   └── <user_id>/
+│       ├── master/       # Uploaded original + ATS-regenerated master PDF
+│       └── tailored/     # Per-job tailored PDFs: <company>_<role>_<date>_resume.pdf
+│
+└── frontend/
+    ├── app.py            # Gradio UI or static HTML — entry point
+    ├── onboarding.py     # Resume upload screen shown on first login (unlocks chat)
+    └── dashboard.py      # Application tracker table + resume version history panel
