@@ -1,0 +1,37 @@
+# Virtual environment — reinstalled inside container
+.venv/
+
+# Runtime data — mount as volumes, never bake into image
+*.db
+*.sqlite
+.chroma/
+resumes/
+.files/
+
+# Secrets — always injected via env vars, never copied
+.env
+.env.local
+.env.*.local
+
+# Developer tooling
+.claude/
+.cursor/
+.idea/
+.vscode/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+nohup.out
+
+# Git
+.git/
+.gitignore

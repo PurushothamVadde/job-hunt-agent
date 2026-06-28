@@ -163,6 +163,28 @@ job-hunt-agent/
 
 ---
 
+## Docker
+
+```bash
+# Build
+docker build -t jobhuntai .
+
+# Run (pass secrets via env vars, mount volumes for persistent data)
+docker run -p 8000:8000 \
+  -e OPENAI_API_KEY=sk-... \
+  -e OAUTH_GOOGLE_CLIENT_ID=... \
+  -e OAUTH_GOOGLE_CLIENT_SECRET=... \
+  -e CHAINLIT_AUTH_SECRET=... \
+  -v $(pwd)/resumes:/app/resumes \
+  -v $(pwd)/.chroma:/app/.chroma \
+  -v $(pwd)/jobhuntai.db:/app/jobhuntai.db \
+  jobhuntai
+```
+
+> **Note:** The image pre-downloads Chromium (via Playwright) and the `all-MiniLM-L6-v2` embedding model at build time, so the first request is fast. Expect a ~3 GB image.
+
+---
+
 ## Environment Variables
 
 | Variable | Required | Description |
