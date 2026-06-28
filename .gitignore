@@ -1,0 +1,59 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables — never commit secrets
+.env
+.env.local
+.env.*.local
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# ChromaDB vector store
+.chroma/
+
+# Generated/uploaded files — contain user data
+resumes/
+.files/
+
+# Per-user dashboard cache (generated at runtime)
+public/dashboard_*.json
+
+# Claude Code session memory — personal, not project config
+.claude/
+
+# IDE / editor
+.idea/
+.vscode/
+.cursor/
+*.swp
+*.swo
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+*.log
+nohup.out
+logs/
+
+# LangSmith / cache
+.langchain/

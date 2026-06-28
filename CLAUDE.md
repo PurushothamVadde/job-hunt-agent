@@ -4,18 +4,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-**JobHuntAI** — a multi-session AI job search assistant. Users upload a master resume once; the agent extracts their career profile, learns across sessions, tailors ATS-safe PDFs per job, and automates applications — all through a streaming chat interface.
+**JobHuntAI** — a multi-session AI job search assistant. Users upload a master resume once; the agent extracts their career profile, learns across sessions, tailors ATS-safe PDFs per job, and automates applications — all through a Chainlit streaming chat interface.
 
-The repository currently contains **documentation only**. No application code exists yet. Implementation should follow the architecture defined in `docs/architecture/`.
-
-## Intended Project Layout
+## Project Layout
 
 ```
 job-hunt-agent/
+├── chainlit_app.py                 # Entry point — Chainlit app, auth, message loop
+├── chainlit.md                     # Chainlit welcome screen content
 ├── agent/
-│   ├── graph.py                    # LangGraph StateGraph — all nodes and edges
-│   ├── memory.py                   # Session-start retrieval + session-end write
+│   ├── orchestrator/
+│   │   ├── graph.py                # LangGraph StateGraph — builds the compiled graph
+│   │   ├── nodes.py                # All node implementations (plan, select, execute, synthesize)
+│   │   ├── routing.py              # Edge routing logic
+│   │   └── state.py                # AgentState TypedDict + SYSTEM_PROMPT
+│   ├── llm/
+│   │   ├── client.py               # complete_json / complete_text helpers
+│   │   └── provider.py             # ChatOpenAI model init
+│   ├── memory/
+│   │   ├── loader.py               # Session-start: load episodic + semantic memories
+│   │   ├── saver.py                # Session-end: write summaries + career facts
+│   │   └── prompt.py               # build_memory_prompt() for system context
 │   ├── tools/
+│   │   ├── __init__.py             # TOOLS + HITL_TOOLS registries, tool_descriptions()
 │   │   ├── rag.py
 │   │   ├── company_job_search.py
 │   │   ├── resume_tailor.py
@@ -23,29 +34,29 @@ job-hunt-agent/
 │   │   ├── auto_apply.py
 │   │   └── mcp_fs.py
 │   ├── resume/
-│   │   ├── ingestion.py
-│   │   ├── tailoring.py
-│   │   ├── pdf_generator.py
+│   │   ├── pipeline.py             # ingest() — full 6-step ingestion pipeline
+│   │   ├── parser.py               # PDF / DOCX → raw text
+│   │   ├── extractor.py            # GPT-4o structured extraction → canonical JSON
+│   │   ├── embedder.py             # Chunk + embed → ChromaDB
+│   │   ├── ingestion.py            # Legacy entry point (imports from pipeline)
+│   │   ├── tailoring.py            # JD → tailored profile delta
+│   │   ├── pdf_generator.py        # WeasyPrint + Jinja2 → ATS PDF
 │   │   └── templates/ats_resume.html
 │   └── playwright/
 │       ├── ats_detector.py
 │       ├── form_filler.py
+│       ├── workday_apply.py        # browser-use Agent for Workday
 │       └── field_maps/{greenhouse,lever,workday,generic}.py
-├── api/
-│   ├── chat.py                     # POST /chat/stream, POST /chat/approve
-│   ├── resume.py
-│   ├── sessions.py
-│   ├── documents.py
-│   └── applications.py
 ├── db/
 │   ├── sqlite.py                   # All DDL + CRUD for every table
-│   └── chroma.py                   # ChromaDB wrapper (upsert / query / delete by namespace)
+│   ├── chroma.py                   # ChromaDB wrapper (upsert / query / delete by namespace)
+│   └── chainlit_data_layer.py      # BaseDataLayer impl — persists threads/steps to SQLite
 ├── observability/
-│   └── langsmith.py                # Client init, metadata tagging, feedback, /admin/traces
-├── frontend/
-│   ├── app.py
-│   ├── onboarding.py
-│   └── dashboard.py
+│   └── langsmith.py
+├── public/                         # Static assets served by Chainlit
+│   ├── custom.css
+│   ├── custom.js
+│   └── *.svg
 └── .env                            # Never committed; see .env.example
 ```
 
@@ -56,16 +67,8 @@ python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 playwright install chromium
 
-cp .env.example .env   # fill in OPENAI_API_KEY + LangSmith vars
-uvicorn api.main:app --reload
-```
-
-## Running / Testing
-
-No test suite exists yet. When adding one, run individual tests with:
-
-```bash
-pytest tests/path/to/test_file.py::test_function_name -v
+cp .env.example .env   # fill in keys
+PYTHONUNBUFFERED=1 chainlit run chainlit_app.py
 ```
 
 ## Required Environment Variables
@@ -76,11 +79,22 @@ LANGCHAIN_TRACING_V2=true
 LANGCHAIN_API_KEY=...
 LANGCHAIN_PROJECT=jobhuntai
 LANGCHAIN_ENDPOINT=https://api.smith.langchain.com
+OAUTH_GOOGLE_CLIENT_ID=...
+OAUTH_GOOGLE_CLIENT_SECRET=...
+CHAINLIT_AUTH_SECRET=...
 ```
 
 ## Architecture — What to Know Before Writing Code
 
-### Agent loop (`agent/graph.py`)
+### Entry point (`chainlit_app.py`)
+
+Chainlit handles OAuth, session management, and message streaming. Key hooks:
+- `@cl.oauth_callback` — Google OAuth → creates/updates user in SQLite
+- `@cl.on_chat_start` — loads memories, sets up session
+- `@cl.on_message` — runs the LangGraph agent, handles HITL approvals
+- `SQLiteDataLayer` registered via `@cl.data_layer` — persists threads and messages for sidebar history
+
+### Agent loop (`agent/orchestrator/`)
 
 A LangGraph `StateGraph` runs on every user message:
 
@@ -88,63 +102,53 @@ A LangGraph `StateGraph` runs on every user message:
 plan → tool_select → tool_execute → synthesize → respond
 ```
 
-`tool_execute` loops back to `tool_select` until all sub-goals are resolved. Post-turn nodes (`auto-summarize → SQLite write → ChromaDB write → LangSmith flush`) run after `respond`. Full state shape is in [docs/architecture/02-agent-orchestration.md](docs/architecture/02-agent-orchestration.md).
+`tool_execute` loops back to `tool_select` until all sub-goals are resolved. HITL interrupts pause the graph; `chainlit_app.py` resumes it with the user's decision via `Command(resume=...)`.
 
-### Memory (`agent/memory.py`)
-
-Two tiers that serve different purposes:
-
-| Tier | Store | What it holds |
-|------|-------|---------------|
-| Episodic | SQLite `episodic_memories` | Auto-generated turn summaries, queried by date |
-| Semantic | ChromaDB `memory:{user_id}` | Career facts extracted by GPT-4o, queried by cosine similarity |
-
-At session start, both are queried and merged into the system prompt. At session end, both are written. Resume chunks live in `resume:{user_id}`; uploaded docs in `docs:{user_id}`.
-
-### HITL (`agent/graph.py` + `api/chat.py`)
-
-Four gates use LangGraph `interrupt()` to pause graph execution:
+### HITL gates (`agent/orchestrator/nodes.py`)
 
 | Gate | Trigger |
 |------|---------|
 | `write_resume` | Before writing tailored PDF to disk |
-| `auto_apply` | Before Playwright touches any form field |
+| `auto_apply` | Before Playwright fills any form field (skipped for `phase=plan`) |
 | `submit_application` | Before clicking Submit |
-| `send_followup` | *(planned)* Before sending a follow-up email |
 
-The graph suspends, emits a `hitl_request` SSE event, and waits for `POST /chat/approve`. `api/chat.py` injects the decision into state and calls `graph.resume()`.
+### Memory (`agent/memory/`)
 
-### SSE Streaming (`api/chat.py`)
+Two tiers:
 
-`POST /chat/stream` returns `text/event-stream`. The backend yields a mix of `token`, `tool_start`, `tool_end`, `hitl_request`, `progress`, and `done` events from a single `graph.astream()` call. The frontend must use `@microsoft/fetch-event-source` (not native `EventSource`) because the endpoint is a POST.
+| Tier | Store | What it holds |
+|------|-------|---------------|
+| Episodic | SQLite `episodic_memories` | Auto-generated turn summaries |
+| Semantic | ChromaDB `memory:{user_id}` | Career facts extracted by GPT-4o |
 
-### Resume Ingestion (`agent/resume/ingestion.py`)
+### Resume Ingestion (`agent/resume/pipeline.py`)
 
-Six-step pipeline triggered by `POST /resume/upload`, all progress streamed over SSE:
-1. Parse PDF (`pypdf`) or DOCX (`python-docx`)
+Six-step pipeline triggered by file upload:
+1. Parse PDF/DOCX → raw text
 2. GPT-4o structured extraction → canonical JSON
 3. Persist to SQLite `resume_profiles`
-4. Chunk (512 tok / 50 tok overlap) + embed → ChromaDB `resume:{user_id}`
-5. Regenerate ATS master PDF via WeasyPrint + Jinja2
+4. Chunk + embed → ChromaDB `resume:{user_id}`
+5. Regenerate ATS master PDF (WeasyPrint + Jinja2)
 6. Extract semantic career facts → ChromaDB `memory:{user_id}`
 
-Until step 6 completes, all chat messages return `onboarding_required`.
+Until step 6 completes, chat returns `onboarding_required`.
 
-### ATS PDF Rules (`agent/resume/templates/ats_resume.html`)
+### Workday Auto-Apply (`agent/playwright/workday_apply.py`)
 
-Single column · Arial/Helvetica 11pt · 0.75 in margins · all text in `<p>`/`<ul>` · standard section order (Contact → Summary → Skills → Experience → Education → Certifications → Projects) · no graphics, columns, or headers/footers.
+Uses **browser-use** Agent (not raw Playwright selectors). Two phases:
+- `run_fill_agent` — navigates, signs in via `sensitive_data`, uploads resume, fills all steps, stops at Review
+- `run_submit_agent` — reopens, clicks Submit
 
-### Playwright Auto-Apply (`agent/tools/auto_apply.py`)
+browser-use always copies `user_data_dir` to a temp path — persistent login is not possible. Credentials must be passed via `sensitive_data` each run.
 
-Detect ATS platform → map profile fields to CSS selectors → HITL Gate 1 (pre-fill preview) → `page.fill()` / `page.set_input_files()` with 1–3 s human-like delays → HITL Gate 2 (screenshot review) → submit → write to `applications` table. Errors (`captcha_blocked`, `login_required`, `unknown_form`) are streamed as SSE events; the pipeline does not throw.
+### Session history (`db/chainlit_data_layer.py`)
 
-### Module Dependencies
-
-Key non-obvious dependency: `api/documents.py` → `db/chroma.py` directly (not through `agent/tools/rag.py`). The RAG tool is a query-time consumer; the ingestion write path goes document → chroma. See [docs/architecture/12-modules.md](docs/architecture/12-modules.md) for the full graph.
+- `create_step` — saves user messages only
+- `update_step` — saves final assistant responses (called when Chainlit finalizes a streamed message)
+- `upsert_assistant_step` in sqlite.py uses `step_uuid` column to update in-place rather than inserting duplicates
 
 ## Key Docs
 
 - [docs/architecture/README.md](docs/architecture/README.md) — index + key design decisions
-- [docs/tools-and-technology.md](docs/tools-and-technology.md) — full library reference with version constraints
-- [docs/architecture/10-api.md](docs/architecture/10-api.md) — complete endpoint reference
-- [docs/architecture/03-persistence.md](docs/architecture/03-persistence.md) — SQLite schema (ER diagram)
+- [docs/tools-and-technology.md](docs/tools-and-technology.md) — full library reference
+- [docs/architecture/03-persistence.md](docs/architecture/03-persistence.md) — SQLite schema

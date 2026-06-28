@@ -1,12 +1,7 @@
-"""Two-tier memory: episodic (SQLite) + semantic career facts (ChromaDB).
-
-- ``load_memories``  : session-start retrieval, merged into the system prompt.
-- ``save_memories``  : session-end write (GPT-4o summary + extracted facts).
-"""
+"""Session-end memory persistence — GPT-4o summary + semantic fact extraction."""
 
 from __future__ import annotations
 
-import json
 from typing import Any
 
 from agent.llm import complete_json
@@ -20,31 +15,6 @@ Return a JSON object:
 }
 Facts must be self-contained and worth remembering across sessions (skills, \
 target companies/roles, constraints, preferences). Return [] if none."""
-
-
-async def load_memories(
-    user_id: str, session_id: str, message: str, *, top_k: int = 5
-) -> list[str]:
-    """Merge the last N episodic summaries with top-K semantic facts."""
-    merged: list[str] = []
-
-    for ep in sqlite.get_recent_episodic(user_id, limit=5):
-        merged.append(f"[past session] {ep['summary']}")
-
-    docs, _metas, _dists = chroma.query(
-        chroma.memory_ns(user_id), message or "career background", top_k
-    )
-    for fact in docs:
-        merged.append(f"[fact] {fact}")
-
-    # De-duplicate while preserving order.
-    seen: set[str] = set()
-    out: list[str] = []
-    for item in merged:
-        if item not in seen:
-            seen.add(item)
-            out.append(item)
-    return out
 
 
 async def save_memories(
@@ -72,13 +42,3 @@ async def save_memories(
             ],
         )
     return {"summary": summary, "facts": facts}
-
-
-def build_memory_prompt(memories: list[str]) -> str:
-    if not memories:
-        return ""
-    body = "\n".join(f"- {m}" for m in memories)
-    return (
-        "Here is what you remember about this user from prior sessions and "
-        f"extracted career facts:\n{body}\n"
-    )

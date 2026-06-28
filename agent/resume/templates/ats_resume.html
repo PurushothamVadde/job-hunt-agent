@@ -4,71 +4,204 @@
 <meta charset="utf-8" />
 <title>{{ p.contact.name }} - Resume</title>
 <style>
-  /* ATS rules: single column, Arial/Helvetica, no tables/images/columns. */
-  @page { size: Letter; margin: 0.75in; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 11pt;
-    line-height: 1.35;
+    color: #000;
+    background: #fff;
+    line-height: 1.4;
+  }
+
+  .page {
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.70in 0.75in;
+  }
+
+  .name {
+    font-size: 22pt;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+
+  .job-title {
+    font-size: 11pt;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+
+  .contact {
+    font-size: 10pt;
+    text-align: center;
+    margin-bottom: 14px;
     color: #000;
   }
-  h1 { font-size: 16pt; margin: 0 0 2pt 0; }
+
+  .contact a { color: #000; text-decoration: none; }
+
+  .contact-sep { color: #666; margin: 0 6px; }
+
   h2 {
-    font-size: 14pt;
-    margin: 14pt 0 4pt 0;
-    border-bottom: 1px solid #000;
-    padding-bottom: 2pt;
+    font-size: 10.5pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #1a4480;
+    border-bottom: 1.5px solid #1a4480;
+    padding-bottom: 2px;
+    margin-top: 11px;
+    margin-bottom: 5px;
   }
-  h3 { font-size: 11pt; margin: 8pt 0 0 0; }
-  p { margin: 2pt 0; }
-  ul { margin: 2pt 0 6pt 0; padding-left: 18pt; }
-  li { margin: 1pt 0; }
-  .contact-line { font-size: 11pt; margin-bottom: 2pt; }
-  .meta { font-style: italic; }
+
+  .summary {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    text-align: justify;
+  }
+
+  .skill-row { font-size: 10.5pt; margin-bottom: 3px; }
+  .skill-row b { font-weight: bold; }
+  .skill-flat { font-size: 10.5pt; line-height: 1.5; }
+
+  .exp-block { margin-bottom: 10px; }
+  .exp-block:last-child { margin-bottom: 0; }
+
+  .exp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .exp-role { font-size: 11pt; font-weight: bold; color: #2563a8; }
+  .exp-date { font-size: 10pt; font-weight: bold; white-space: nowrap; }
+
+  .exp-company {
+    font-size: 10pt;
+    font-style: italic;
+    color: #333;
+    margin-bottom: 3px;
+  }
+
+  .exp-block ul { padding-left: 18px; list-style-type: disc; }
+  .exp-block li {
+    font-size: 10.5pt;
+    line-height: 1.42;
+    margin-bottom: 2.5px;
+    text-align: justify;
+  }
+
+  .edu-block { margin-bottom: 5px; }
+  .edu-block:last-child { margin-bottom: 0; }
+
+  .edu-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .edu-degree { font-size: 10.5pt; font-weight: bold; color: #2563a8; }
+  .edu-date { font-size: 10pt; font-weight: bold; white-space: nowrap; }
+  .edu-school { font-size: 10pt; font-style: italic; color: #333; }
+
+  .proj-block { margin-bottom: 8px; }
+  .proj-block:last-child { margin-bottom: 0; }
+  .proj-name { font-size: 10.5pt; font-weight: bold; color: #2563a8; margin-bottom: 2px; }
+  .proj-block ul { padding-left: 18px; list-style-type: disc; }
+  .proj-block li { font-size: 10.5pt; line-height: 1.42; margin-bottom: 2px; }
+
+  @media print {
+    body { background: white; }
+    .page { padding: 0; }
+  }
+
+  @page { margin: 0.70in 0.75in; }
 </style>
 </head>
 <body>
+<div class="page">
 
-  <!-- Contact -->
-  <h1>{{ p.contact.name }}</h1>
-  <p class="contact-line">
-    {% set bits = [p.contact.email, p.contact.phone, p.contact.location,
-                   p.contact.linkedin, p.contact.website] %}
-    {{ bits | select | join('  |  ') }}
-  </p>
+  <!-- Header -->
+  <div class="name">{{ p.contact.name }}</div>
+  {% if p.contact.title %}
+  <div class="job-title">{{ p.contact.title }}</div>
+  {% endif %}
+  <div class="contact">
+    {% set sep = '<span class="contact-sep">|</span>' %}
+    {% set parts = [] %}
+    {% if p.contact.phone %}
+      {% set _ = parts.append('<a href="tel:' ~ p.contact.phone ~ '">' ~ p.contact.phone ~ '</a>') %}
+    {% endif %}
+    {% if p.contact.email %}
+      {% set _ = parts.append('<a href="mailto:' ~ p.contact.email ~ '">' ~ p.contact.email ~ '</a>') %}
+    {% endif %}
+    {% if p.contact.location %}
+      {% set _ = parts.append(p.contact.location) %}
+    {% endif %}
+    {% if p.contact.linkedin %}
+      {% set li_url = p.contact.linkedin if p.contact.linkedin.startswith('http') else 'https://' ~ p.contact.linkedin %}
+      {% set _ = parts.append('<a href="' ~ li_url ~ '">' ~ p.contact.linkedin ~ '</a>') %}
+    {% endif %}
+    {% if p.contact.website %}
+      {% set ws_url = p.contact.website if p.contact.website.startswith('http') else 'https://' ~ p.contact.website %}
+      {% set _ = parts.append('<a href="' ~ ws_url ~ '">' ~ p.contact.website ~ '</a>') %}
+    {% endif %}
+    {{ parts | join(' <span class="contact-sep">|</span> ') | safe }}
+  </div>
 
   <!-- Summary -->
   {% if p.summary %}
-  <h2>Summary</h2>
-  <p>{{ p.summary }}</p>
+  <h2>Professional Summary</h2>
+  <p class="summary">{{ p.summary }}</p>
   {% endif %}
 
   <!-- Skills -->
   {% if p.skills %}
-  <h2>Skills</h2>
-  <ul>
+  <h2>Technical Skills</h2>
+  {% set ns = namespace(has_groups=false) %}
+  {% for skill in p.skills %}{% if ':' in skill %}{% set ns.has_groups = true %}{% endif %}{% endfor %}
+  {% if ns.has_groups %}
     {% for skill in p.skills %}
-    <li>{{ skill }}</li>
+      {% set parts = skill.split(':', 1) %}
+      {% if parts | length == 2 %}
+      <div class="skill-row"><b>{{ parts[0] }}:</b> {{ parts[1] | trim }}</div>
+      {% else %}
+      <div class="skill-row">{{ skill }}</div>
+      {% endif %}
     {% endfor %}
-  </ul>
+  {% else %}
+    <p class="skill-flat">{{ p.skills | join(' &bull; ') | safe }}</p>
+  {% endif %}
   {% endif %}
 
   <!-- Experience -->
   {% if p.experience %}
-  <h2>Experience</h2>
+  <h2>Work Experience</h2>
   {% for job in p.experience %}
-  <h3>{{ job.title }}{% if job.company %} - {{ job.company }}{% endif %}</h3>
-  <p class="meta">
-    {{ [job.location, [job.start, job.end] | select | join(' – ')]
-       | select | join('  |  ') }}
-  </p>
-  {% if job.bullets %}
-  <ul>
-    {% for b in job.bullets %}
-    <li>{{ b }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+  <div class="exp-block">
+    <div class="exp-top">
+      <div class="exp-role">{{ job.title }}</div>
+      <div class="exp-date">
+        {% if job.start %}{{ job.start }}{% endif %}
+        {% if job.start and job.end %} &ndash; {% endif %}
+        {% if job.end %}{{ job.end }}{% endif %}
+      </div>
+    </div>
+    {% if job.company %}
+    <div class="exp-company">{{ job.company }}{% if job.location %} | {{ job.location }}{% endif %}</div>
+    {% endif %}
+    {% if job.bullets %}
+    <ul>
+      {% for b in job.bullets %}
+      <li>{{ b }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
   {% endfor %}
   {% endif %}
 
@@ -76,40 +209,39 @@
   {% if p.education %}
   <h2>Education</h2>
   {% for ed in p.education %}
-  <h3>{{ ed.degree }}{% if ed.field %}, {{ ed.field }}{% endif %}</h3>
-  <p class="meta">
-    {{ [ed.institution, [ed.start, ed.end] | select | join(' – ')]
-       | select | join('  |  ') }}
-  </p>
-  {% if ed.details %}<p>{{ ed.details }}</p>{% endif %}
+  <div class="edu-block">
+    <div class="edu-top">
+      <div class="edu-degree">{{ ed.degree }}{% if ed.field %}, {{ ed.field }}{% endif %}</div>
+      <div class="edu-date">
+        {% if ed.start %}{{ ed.start }}{% endif %}
+        {% if ed.start and ed.end %} &ndash; {% endif %}
+        {% if ed.end %}{{ ed.end }}{% endif %}
+      </div>
+    </div>
+    <div class="edu-school">{{ ed.institution }}</div>
+    {% if ed.details %}<p style="font-size:10pt; margin-top:2px;">{{ ed.details }}</p>{% endif %}
+  </div>
   {% endfor %}
-  {% endif %}
-
-  <!-- Certifications -->
-  {% if p.certifications %}
-  <h2>Certifications</h2>
-  <ul>
-    {% for c in p.certifications %}
-    <li>{{ c }}</li>
-    {% endfor %}
-  </ul>
   {% endif %}
 
   <!-- Projects -->
   {% if p.projects %}
   <h2>Projects</h2>
   {% for proj in p.projects %}
-  <h3>{{ proj.name }}</h3>
-  {% if proj.description %}<p>{{ proj.description }}</p>{% endif %}
-  {% if proj.bullets %}
-  <ul>
-    {% for b in proj.bullets %}
-    <li>{{ b }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %}
+  <div class="proj-block">
+    <div class="proj-name">{{ proj.name }}</div>
+    {% if proj.description %}<p style="font-size:10.5pt; margin-bottom:2px;">{{ proj.description }}</p>{% endif %}
+    {% if proj.bullets %}
+    <ul>
+      {% for b in proj.bullets %}
+      <li>{{ b }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
   {% endfor %}
   {% endif %}
 
+</div>
 </body>
 </html>

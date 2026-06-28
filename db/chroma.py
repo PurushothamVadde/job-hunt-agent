@@ -51,6 +51,12 @@ def _embedding_fn():
     )
 
 
+def init_chroma() -> None:
+    """Eagerly initialise the ChromaDB client and embedding model on startup."""
+    _client()
+    _embedding_fn()
+
+
 def _collection(namespace: str):
     return _client().get_or_create_collection(
         name=_normalize(namespace),
@@ -119,6 +125,21 @@ def delete_namespace(namespace: str) -> None:
     except Exception:
         # Collection may not exist yet — that's fine.
         pass
+
+
+def delete_where(namespace: str, where: dict[str, Any]) -> int:
+    """Delete all documents matching a metadata filter. Returns count deleted.
+
+    Example: delete_where(memory_ns(user_id), {"source": "resume"})
+    """
+    col = _collection(namespace)
+    if col.count() == 0:
+        return 0
+    result = col.get(where=where)
+    ids = result.get("ids", [])
+    if ids:
+        col.delete(ids=ids)
+    return len(ids)
 
 
 def count(namespace: str) -> int:

@@ -54,19 +54,14 @@ async def run(input: dict[str, Any], user_id: str) -> dict[str, Any]:
     if args.action == "read":
         if not target.exists() or target.is_dir():
             return {"tool": "mcp_fs", "error": "file not found"}
-        if target.suffix.lower() in (".pdf", ".png", ".jpg", ".jpeg"):
-            return {
-                "tool": "mcp_fs",
-                "action": "read",
-                "binary": True,
-                "path": str(target),
-                "size": target.stat().st_size,
-            }
+        is_binary = target.suffix.lower() in (".pdf", ".png", ".jpg", ".jpeg")
         return {
             "tool": "mcp_fs",
             "action": "read",
             "path": str(target),
-            "content": target.read_text(encoding="utf-8", errors="ignore"),
+            "binary": is_binary,
+            "content": None if is_binary else target.read_text(encoding="utf-8", errors="ignore"),
+            "size": target.stat().st_size,
         }
 
     if args.action == "write":

@@ -1,0 +1,2638 @@
+{
+  "1kosmos": {
+    "careers_url": "https://apply.workable.com/1kosmos/",
+    "source": "verified_known"
+  },
+  "6sense": {
+    "careers_url": "https://6sense.com/about-us/careers/",
+    "source": "verified_known"
+  },
+  "accelya": {
+    "careers_url": "https://www.accelya.com/careers",
+    "source": "inferred_pattern"
+  },
+  "accenture": {
+    "careers_url": "https://www.accenture.com/us-en/careers",
+    "source": "verified_known"
+  },
+  "accolite": {
+    "careers_url": "https://www.accolite.com/careers",
+    "source": "inferred_pattern"
+  },
+  "acko": {
+    "careers_url": "https://www.acko.com/careers",
+    "source": "inferred_pattern"
+  },
+  "acorns": {
+    "careers_url": "https://www.acorns.com/careers",
+    "source": "inferred_pattern"
+  },
+  "activision": {
+    "careers_url": "https://www.activision.com/careers",
+    "source": "inferred_pattern"
+  },
+  "adobe": {
+    "careers_url": "https://careers.adobe.com/us/en/home",
+    "source": "verified_known"
+  },
+  "adp": {
+    "careers_url": "https://www.adp.com/careers",
+    "source": "inferred_pattern"
+  },
+  "aetion": {
+    "careers_url": "https://www.aetion.com/careers",
+    "source": "inferred_pattern"
+  },
+  "affinity": {
+    "careers_url": "https://www.affinity.com/careers",
+    "source": "inferred_pattern"
+  },
+  "affirm": {
+    "careers_url": "https://www.affirm.com/careers",
+    "source": "inferred_pattern"
+  },
+  "agoda": {
+    "careers_url": "https://www.agoda.com/careers",
+    "source": "inferred_pattern"
+  },
+  "airbnb": {
+    "careers_url": "https://careers.airbnb.com/",
+    "source": "verified_known"
+  },
+  "airbus": {
+    "careers_url": "https://www.airbus.com/careers",
+    "source": "inferred_pattern"
+  },
+  "airtel": {
+    "careers_url": "https://www.airtel.com/careers",
+    "source": "inferred_pattern"
+  },
+  "airwallex": {
+    "careers_url": "https://www.airwallex.com/careers",
+    "source": "inferred_pattern"
+  },
+  "akamai": {
+    "careers_url": "https://www.akamai.com/careers",
+    "source": "inferred_pattern"
+  },
+  "akuna-capital": {
+    "careers_url": "https://www.akuna-capital.com/careers",
+    "source": "inferred_pattern"
+  },
+  "alibaba": {
+    "careers_url": "https://www.alibaba.com/careers",
+    "source": "inferred_pattern"
+  },
+  "allincall": {
+    "careers_url": "https://www.allincall.com/careers",
+    "source": "inferred_pattern"
+  },
+  "alphonso": {
+    "careers_url": "https://www.alphonso.com/careers",
+    "source": "inferred_pattern"
+  },
+  "alten": {
+    "careers_url": "https://www.alten.com/careers",
+    "source": "inferred_pattern"
+  },
+  "altimetrik": {
+    "careers_url": "https://www.altimetrik.com/careers",
+    "source": "inferred_pattern"
+  },
+  "amadeus": {
+    "careers_url": "https://www.amadeus.com/careers",
+    "source": "inferred_pattern"
+  },
+  "amazon": {
+    "careers_url": "https://www.amazon.jobs/",
+    "source": "verified_known"
+  },
+  "amd": {
+    "careers_url": "https://www.amd.com/careers",
+    "source": "inferred_pattern"
+  },
+  "amdocs": {
+    "careers_url": "https://www.amdocs.com/careers",
+    "source": "inferred_pattern"
+  },
+  "american-airlines": {
+    "careers_url": "https://www.american-airlines.com/careers",
+    "source": "inferred_pattern"
+  },
+  "american-express": {
+    "careers_url": "https://www.american-express.com/careers",
+    "source": "inferred_pattern"
+  },
+  "amplitude": {
+    "careers_url": "https://www.amplitude.com/careers",
+    "source": "inferred_pattern"
+  },
+  "analytics-quotient": {
+    "careers_url": "https://www.analytics-quotient.com/careers",
+    "source": "inferred_pattern"
+  },
+  "andela": {
+    "careers_url": "https://www.andela.com/careers",
+    "source": "inferred_pattern"
+  },
+  "anduril": {
+    "careers_url": "https://www.anduril.com/careers",
+    "source": "inferred_pattern"
+  },
+  "anthropic": {
+    "careers_url": "https://www.anthropic.com/careers",
+    "source": "inferred_pattern"
+  },
+  "anyscale": {
+    "careers_url": "https://www.anyscale.com/careers",
+    "source": "inferred_pattern"
+  },
+  "aon": {
+    "careers_url": "https://www.aon.com/careers",
+    "source": "inferred_pattern"
+  },
+  "apolloio": {
+    "careers_url": "https://www.apolloio.com/careers",
+    "source": "inferred_pattern"
+  },
+  "appdynamics": {
+    "careers_url": "https://www.appdynamics.com/careers",
+    "source": "inferred_pattern"
+  },
+  "appfolio": {
+    "careers_url": "https://www.appfolio.com/careers",
+    "source": "inferred_pattern"
+  },
+  "apple": {
+    "careers_url": "https://www.apple.com/careers/us/",
+    "source": "verified_known"
+  },
+  "applied-intuition": {
+    "careers_url": "https://www.applied-intuition.com/careers",
+    "source": "inferred_pattern"
+  },
+  "aqr-capital-management": {
+    "careers_url": "https://www.aqr-capital-management.com/careers",
+    "source": "inferred_pattern"
+  },
+  "arcesium": {
+    "careers_url": "https://www.arcesium.com/careers",
+    "source": "inferred_pattern"
+  },
+  "argo-ai": {
+    "careers_url": "https://www.argo-ai.com/careers",
+    "source": "inferred_pattern"
+  },
+  "arista-networks": {
+    "careers_url": "https://www.arista-networks.com/careers",
+    "source": "inferred_pattern"
+  },
+  "asana": {
+    "careers_url": "https://www.asana.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ascend": {
+    "careers_url": "https://www.ascend.com/careers",
+    "source": "inferred_pattern"
+  },
+  "athenahealth": {
+    "careers_url": "https://www.athenahealth.com/careers",
+    "source": "inferred_pattern"
+  },
+  "atlassian": {
+    "careers_url": "https://www.atlassian.com/company/careers",
+    "source": "verified_known"
+  },
+  "att": {
+    "careers_url": "https://www.att.com/careers",
+    "source": "inferred_pattern"
+  },
+  "attentive": {
+    "careers_url": "https://www.attentive.com/careers",
+    "source": "inferred_pattern"
+  },
+  "audible": {
+    "careers_url": "https://www.audible.com/careers",
+    "source": "inferred_pattern"
+  },
+  "auriga": {
+    "careers_url": "https://www.auriga.com/careers",
+    "source": "inferred_pattern"
+  },
+  "aurora": {
+    "careers_url": "https://www.aurora.com/careers",
+    "source": "inferred_pattern"
+  },
+  "autodesk": {
+    "careers_url": "https://www.autodesk.com/careers",
+    "source": "inferred_pattern"
+  },
+  "avalara": {
+    "careers_url": "https://www.avalara.com/careers",
+    "source": "inferred_pattern"
+  },
+  "avito": {
+    "careers_url": "https://www.avito.com/careers",
+    "source": "inferred_pattern"
+  },
+  "axis-bank": {
+    "careers_url": "https://www.axis-bank.com/careers",
+    "source": "inferred_pattern"
+  },
+  "axon": {
+    "careers_url": "https://www.axon.com/careers",
+    "source": "inferred_pattern"
+  },
+  "baidu": {
+    "careers_url": "https://www.baidu.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bank-of-america": {
+    "careers_url": "https://www.bank-of-america.com/careers",
+    "source": "inferred_pattern"
+  },
+  "barclays": {
+    "careers_url": "https://www.barclays.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bcg": {
+    "careers_url": "https://www.bcg.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bending-spoons": {
+    "careers_url": "https://www.bending-spoons.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bill-com": {
+    "careers_url": "https://www.bill-com.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bitgo": {
+    "careers_url": "https://www.bitgo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "blackbuck": {
+    "careers_url": "https://www.blackbuck.com/careers",
+    "source": "inferred_pattern"
+  },
+  "blackrock": {
+    "careers_url": "https://www.blackrock.com/careers",
+    "source": "inferred_pattern"
+  },
+  "blackstone": {
+    "careers_url": "https://www.blackstone.com/careers",
+    "source": "inferred_pattern"
+  },
+  "blend": {
+    "careers_url": "https://www.blend.com/careers",
+    "source": "inferred_pattern"
+  },
+  "blinkit": {
+    "careers_url": "https://www.blinkit.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bloomberg": {
+    "careers_url": "https://www.bloomberg.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bloomreach": {
+    "careers_url": "https://www.bloomreach.com/careers",
+    "source": "inferred_pattern"
+  },
+  "blue-origin": {
+    "careers_url": "https://www.blue-origin.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bnp-paribas": {
+    "careers_url": "https://www.bnp-paribas.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bny-mellon": {
+    "careers_url": "https://www.bny-mellon.com/careers",
+    "source": "inferred_pattern"
+  },
+  "boeing": {
+    "careers_url": "https://www.boeing.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bolt": {
+    "careers_url": "https://www.bolt.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bookingcom": {
+    "careers_url": "https://www.bookingcom.com/careers",
+    "source": "inferred_pattern"
+  },
+  "box": {
+    "careers_url": "https://www.box.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bp": {
+    "careers_url": "https://www.bp.com/careers",
+    "source": "inferred_pattern"
+  },
+  "braze": {
+    "careers_url": "https://www.braze.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bridgewater-associates": {
+    "careers_url": "https://www.bridgewater-associates.com/careers",
+    "source": "inferred_pattern"
+  },
+  "brillio": {
+    "careers_url": "https://www.brillio.com/careers",
+    "source": "inferred_pattern"
+  },
+  "broadcom": {
+    "careers_url": "https://www.broadcom.com/careers",
+    "source": "inferred_pattern"
+  },
+  "browserstack": {
+    "careers_url": "https://www.browserstack.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bt-group": {
+    "careers_url": "https://www.bt-group.com/careers",
+    "source": "inferred_pattern"
+  },
+  "buyhatke": {
+    "careers_url": "https://www.buyhatke.com/careers",
+    "source": "inferred_pattern"
+  },
+  "bytedance": {
+    "careers_url": "https://www.bytedance.com/careers",
+    "source": "inferred_pattern"
+  },
+  "c3-ai": {
+    "careers_url": "https://www.c3-ai.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cadence": {
+    "careers_url": "https://www.cadence.com/careers",
+    "source": "inferred_pattern"
+  },
+  "canonical": {
+    "careers_url": "https://www.canonical.com/careers",
+    "source": "inferred_pattern"
+  },
+  "canva": {
+    "careers_url": "https://www.canva.com/careers",
+    "source": "inferred_pattern"
+  },
+  "capgemini": {
+    "careers_url": "https://www.capgemini.com/careers",
+    "source": "inferred_pattern"
+  },
+  "capital-one": {
+    "careers_url": "https://www.capital-one.com/careers",
+    "source": "inferred_pattern"
+  },
+  "careem": {
+    "careers_url": "https://www.careem.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cars24": {
+    "careers_url": "https://www.cars24.com/careers",
+    "source": "inferred_pattern"
+  },
+  "carwale": {
+    "careers_url": "https://www.carwale.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cashfree": {
+    "careers_url": "https://www.cashfree.com/careers",
+    "source": "inferred_pattern"
+  },
+  "caterpillar": {
+    "careers_url": "https://www.caterpillar.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cerner": {
+    "careers_url": "https://www.cerner.com/careers",
+    "source": "inferred_pattern"
+  },
+  "chalo": {
+    "careers_url": "https://www.chalo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "chargebee": {
+    "careers_url": "https://www.chargebee.com/careers",
+    "source": "inferred_pattern"
+  },
+  "checkpoint": {
+    "careers_url": "https://www.checkpoint.com/careers",
+    "source": "inferred_pattern"
+  },
+  "chewy": {
+    "careers_url": "https://www.chewy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "chime": {
+    "careers_url": "https://www.chime.com/careers",
+    "source": "inferred_pattern"
+  },
+  "chubb": {
+    "careers_url": "https://www.chubb.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ciena": {
+    "careers_url": "https://www.ciena.com/careers",
+    "source": "inferred_pattern"
+  },
+  "circle": {
+    "careers_url": "https://www.circle.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cisco": {
+    "careers_url": "https://www.cisco.com/careers",
+    "source": "inferred_pattern"
+  },
+  "citadel": {
+    "careers_url": "https://www.citadel.com/careers",
+    "source": "inferred_pattern"
+  },
+  "citi": {
+    "careers_url": "https://www.citi.com/careers",
+    "source": "inferred_pattern"
+  },
+  "citrix": {
+    "careers_url": "https://www.citrix.com/careers",
+    "source": "inferred_pattern"
+  },
+  "clari": {
+    "careers_url": "https://www.clari.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cleartrip": {
+    "careers_url": "https://www.cleartrip.com/careers",
+    "source": "inferred_pattern"
+  },
+  "clevertap": {
+    "careers_url": "https://www.clevertap.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cloudera": {
+    "careers_url": "https://www.cloudera.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cloudflare": {
+    "careers_url": "https://www.cloudflare.com/careers/",
+    "source": "verified_known"
+  },
+  "clutter": {
+    "careers_url": "https://www.clutter.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cme-group": {
+    "careers_url": "https://www.cme-group.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cockroach-labs": {
+    "careers_url": "https://www.cockroach-labs.com/careers",
+    "source": "inferred_pattern"
+  },
+  "code-studio": {
+    "careers_url": "https://www.code-studio.com/careers",
+    "source": "inferred_pattern"
+  },
+  "coditas": {
+    "careers_url": "https://www.coditas.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cognizant": {
+    "careers_url": "https://www.cognizant.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cohesity": {
+    "careers_url": "https://www.cohesity.com/careers",
+    "source": "inferred_pattern"
+  },
+  "coinbase": {
+    "careers_url": "https://www.coinbase.com/careers",
+    "source": "verified_known"
+  },
+  "coindcx": {
+    "careers_url": "https://www.coindcx.com/careers",
+    "source": "inferred_pattern"
+  },
+  "coinswitch-kuber": {
+    "careers_url": "https://www.coinswitch-kuber.com/careers",
+    "source": "inferred_pattern"
+  },
+  "comcast": {
+    "careers_url": "https://www.comcast.com/careers",
+    "source": "inferred_pattern"
+  },
+  "commvault": {
+    "careers_url": "https://www.commvault.com/careers",
+    "source": "inferred_pattern"
+  },
+  "compass": {
+    "careers_url": "https://www.compass.com/careers",
+    "source": "inferred_pattern"
+  },
+  "confluent": {
+    "careers_url": "https://www.confluent.com/careers",
+    "source": "inferred_pattern"
+  },
+  "couchbase": {
+    "careers_url": "https://www.couchbase.com/careers",
+    "source": "inferred_pattern"
+  },
+  "coupa": {
+    "careers_url": "https://www.coupa.com/careers",
+    "source": "inferred_pattern"
+  },
+  "coupang": {
+    "careers_url": "https://www.coupang.com/careers",
+    "source": "inferred_pattern"
+  },
+  "coursera": {
+    "careers_url": "https://www.coursera.com/careers",
+    "source": "inferred_pattern"
+  },
+  "coveo": {
+    "careers_url": "https://www.coveo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cred": {
+    "careers_url": "https://www.cred.com/careers",
+    "source": "inferred_pattern"
+  },
+  "criteo": {
+    "careers_url": "https://www.criteo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "crowdstrike": {
+    "careers_url": "https://www.crowdstrike.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cruise-automation": {
+    "careers_url": "https://www.cruise-automation.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ctc": {
+    "careers_url": "https://www.ctc.com/careers",
+    "source": "inferred_pattern"
+  },
+  "curefit": {
+    "careers_url": "https://www.curefit.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cvent": {
+    "careers_url": "https://www.cvent.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cvs": {
+    "careers_url": "https://jobs.cvshealth.com/us/en",
+    "source": "verified_known"
+  },
+  "cvs-health": {
+    "careers_url": "https://jobs.cvshealth.com/us/en",
+    "source": "verified_known"
+  },
+  "cyntexa": {
+    "careers_url": "https://www.cyntexa.com/careers",
+    "source": "inferred_pattern"
+  },
+  "cyware": {
+    "careers_url": "https://www.cyware.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dailyhunt": {
+    "careers_url": "https://www.dailyhunt.com/careers",
+    "source": "inferred_pattern"
+  },
+  "darwinbox": {
+    "careers_url": "https://www.darwinbox.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dassault-sysetmes": {
+    "careers_url": "https://www.dassault-sysetmes.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dataart": {
+    "careers_url": "https://www.dataart.com/careers",
+    "source": "inferred_pattern"
+  },
+  "databricks": {
+    "careers_url": "https://www.databricks.com/company/careers",
+    "source": "verified_known"
+  },
+  "datadog": {
+    "careers_url": "https://www.datadoghq.com/careers/",
+    "source": "verified_known"
+  },
+  "dataminr": {
+    "careers_url": "https://www.dataminr.com/careers",
+    "source": "inferred_pattern"
+  },
+  "de-shaw": {
+    "careers_url": "https://www.de-shaw.com/careers",
+    "source": "inferred_pattern"
+  },
+  "deepmind": {
+    "careers_url": "https://www.deepmind.com/careers",
+    "source": "inferred_pattern"
+  },
+  "delhivery": {
+    "careers_url": "https://www.delhivery.com/careers",
+    "source": "inferred_pattern"
+  },
+  "deliveroo": {
+    "careers_url": "https://www.deliveroo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dell": {
+    "careers_url": "https://www.dell.com/careers",
+    "source": "inferred_pattern"
+  },
+  "deloitte": {
+    "careers_url": "https://www.deloitte.com/careers",
+    "source": "inferred_pattern"
+  },
+  "deltax": {
+    "careers_url": "https://www.deltax.com/careers",
+    "source": "inferred_pattern"
+  },
+  "deutsche-bank": {
+    "careers_url": "https://www.deutsche-bank.com/careers",
+    "source": "inferred_pattern"
+  },
+  "devrev": {
+    "careers_url": "https://www.devrev.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dialpad": {
+    "careers_url": "https://www.dialpad.com/careers",
+    "source": "inferred_pattern"
+  },
+  "directi": {
+    "careers_url": "https://www.directi.com/careers",
+    "source": "inferred_pattern"
+  },
+  "discord": {
+    "careers_url": "https://www.discord.com/careers",
+    "source": "inferred_pattern"
+  },
+  "discovery": {
+    "careers_url": "https://www.discovery.com/careers",
+    "source": "inferred_pattern"
+  },
+  "disney": {
+    "careers_url": "https://www.disney.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dji": {
+    "careers_url": "https://www.dji.com/careers",
+    "source": "inferred_pattern"
+  },
+  "docusign": {
+    "careers_url": "https://www.docusign.com/careers",
+    "source": "inferred_pattern"
+  },
+  "doordash": {
+    "careers_url": "https://careers.doordash.com/",
+    "source": "verified_known"
+  },
+  "dp-world": {
+    "careers_url": "https://www.dp-world.com/careers",
+    "source": "inferred_pattern"
+  },
+  "drawbridge": {
+    "careers_url": "https://www.drawbridge.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dream11": {
+    "careers_url": "https://www.dream11.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dropbox": {
+    "careers_url": "https://www.dropbox.com/jobs",
+    "source": "verified_known"
+  },
+  "druva": {
+    "careers_url": "https://www.druva.com/careers",
+    "source": "inferred_pattern"
+  },
+  "drw": {
+    "careers_url": "https://www.drw.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dtcc": {
+    "careers_url": "https://www.dtcc.com/careers",
+    "source": "inferred_pattern"
+  },
+  "dunzo": {
+    "careers_url": "https://www.dunzo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "duolingo": {
+    "careers_url": "https://www.duolingo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "earnin": {
+    "careers_url": "https://www.earnin.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ebay": {
+    "careers_url": "https://www.ebay.com/careers",
+    "source": "inferred_pattern"
+  },
+  "edelweiss": {
+    "careers_url": "https://www.edelweiss.com/careers",
+    "source": "inferred_pattern"
+  },
+  "electronic-arts": {
+    "careers_url": "https://www.electronic-arts.com/careers",
+    "source": "inferred_pattern"
+  },
+  "elitmus": {
+    "careers_url": "https://www.elitmus.com/careers",
+    "source": "inferred_pattern"
+  },
+  "envoy": {
+    "careers_url": "https://www.envoy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "epam-systems": {
+    "careers_url": "https://www.epam-systems.com/careers",
+    "source": "inferred_pattern"
+  },
+  "epic-games": {
+    "careers_url": "https://www.epic-games.com/careers",
+    "source": "inferred_pattern"
+  },
+  "epic-systems": {
+    "careers_url": "https://www.epic-systems.com/careers",
+    "source": "inferred_pattern"
+  },
+  "epifi": {
+    "careers_url": "https://www.epifi.com/careers",
+    "source": "inferred_pattern"
+  },
+  "equinix": {
+    "careers_url": "https://www.equinix.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ericsson": {
+    "careers_url": "https://www.ericsson.com/careers",
+    "source": "inferred_pattern"
+  },
+  "etsy": {
+    "careers_url": "https://www.etsy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "exl": {
+    "careers_url": "https://www.exl.com/careers",
+    "source": "inferred_pattern"
+  },
+  "expedia": {
+    "careers_url": "https://www.expedia.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ey": {
+    "careers_url": "https://www.ey.com/careers",
+    "source": "inferred_pattern"
+  },
+  "f5-networks": {
+    "careers_url": "https://www.f5-networks.com/careers",
+    "source": "inferred_pattern"
+  },
+  "factset": {
+    "careers_url": "https://www.factset.com/careers",
+    "source": "inferred_pattern"
+  },
+  "faire": {
+    "careers_url": "https://www.faire.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fallible": {
+    "careers_url": "https://www.fallible.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fanatics": {
+    "careers_url": "https://www.fanatics.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fast": {
+    "careers_url": "https://www.fast.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fastenal": {
+    "careers_url": "https://www.fastenal.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fico": {
+    "careers_url": "https://www.fico.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fidelity": {
+    "careers_url": "https://www.fidelity.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fidessa": {
+    "careers_url": "https://www.fidessa.com/careers",
+    "source": "inferred_pattern"
+  },
+  "figma": {
+    "careers_url": "https://www.figma.com/careers/",
+    "source": "verified_known"
+  },
+  "fiverr": {
+    "careers_url": "https://www.fiverr.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fivetran": {
+    "careers_url": "https://www.fivetran.com/careers",
+    "source": "inferred_pattern"
+  },
+  "flatiron-health": {
+    "careers_url": "https://www.flatiron-health.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fleetx": {
+    "careers_url": "https://www.fleetx.com/careers",
+    "source": "inferred_pattern"
+  },
+  "flexera": {
+    "careers_url": "https://www.flexera.com/careers",
+    "source": "inferred_pattern"
+  },
+  "flexport": {
+    "careers_url": "https://www.flexport.com/careers",
+    "source": "inferred_pattern"
+  },
+  "flipkart": {
+    "careers_url": "https://www.flipkart.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fortinet": {
+    "careers_url": "https://www.fortinet.com/careers",
+    "source": "inferred_pattern"
+  },
+  "forusall": {
+    "careers_url": "https://www.forusall.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fourkites": {
+    "careers_url": "https://www.fourkites.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fpt": {
+    "careers_url": "https://www.fpt.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fractal-analytics": {
+    "careers_url": "https://www.fractal-analytics.com/careers",
+    "source": "inferred_pattern"
+  },
+  "freecharge": {
+    "careers_url": "https://www.freecharge.com/careers",
+    "source": "inferred_pattern"
+  },
+  "freshworks": {
+    "careers_url": "https://www.freshworks.com/careers",
+    "source": "inferred_pattern"
+  },
+  "fynd": {
+    "careers_url": "https://www.fynd.com/careers",
+    "source": "inferred_pattern"
+  },
+  "gainsight": {
+    "careers_url": "https://www.gainsight.com/careers",
+    "source": "inferred_pattern"
+  },
+  "gameskraft": {
+    "careers_url": "https://www.gameskraft.com/careers",
+    "source": "inferred_pattern"
+  },
+  "garena": {
+    "careers_url": "https://www.garena.com/careers",
+    "source": "inferred_pattern"
+  },
+  "garmin": {
+    "careers_url": "https://www.garmin.com/careers",
+    "source": "inferred_pattern"
+  },
+  "gartner": {
+    "careers_url": "https://www.gartner.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ge-digital": {
+    "careers_url": "https://www.ge-digital.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ge-healthcare": {
+    "careers_url": "https://www.ge-healthcare.com/careers",
+    "source": "inferred_pattern"
+  },
+  "geico": {
+    "careers_url": "https://www.geico.com/careers",
+    "source": "inferred_pattern"
+  },
+  "general-electric": {
+    "careers_url": "https://www.general-electric.com/careers",
+    "source": "inferred_pattern"
+  },
+  "general-motors": {
+    "careers_url": "https://www.general-motors.com/careers",
+    "source": "inferred_pattern"
+  },
+  "gilt-groupe": {
+    "careers_url": "https://www.gilt-groupe.com/careers",
+    "source": "inferred_pattern"
+  },
+  "github": {
+    "careers_url": "https://github.com/about/careers",
+    "source": "verified_known"
+  },
+  "glassdoor": {
+    "careers_url": "https://www.glassdoor.com/careers",
+    "source": "inferred_pattern"
+  },
+  "globallogic": {
+    "careers_url": "https://www.globallogic.com/careers",
+    "source": "inferred_pattern"
+  },
+  "glovo": {
+    "careers_url": "https://www.glovo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "godaddy": {
+    "careers_url": "https://www.godaddy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "gojek": {
+    "careers_url": "https://www.gojek.com/careers",
+    "source": "inferred_pattern"
+  },
+  "goldman-sachs": {
+    "careers_url": "https://www.goldman-sachs.com/careers",
+    "source": "inferred_pattern"
+  },
+  "google": {
+    "careers_url": "https://www.google.com/about/careers/applications/",
+    "source": "verified_known"
+  },
+  "gopuff": {
+    "careers_url": "https://www.gopuff.com/careers",
+    "source": "inferred_pattern"
+  },
+  "goto": {
+    "careers_url": "https://www.goto.com/careers",
+    "source": "inferred_pattern"
+  },
+  "grab": {
+    "careers_url": "https://www.grab.com/careers",
+    "source": "inferred_pattern"
+  },
+  "grammarly": {
+    "careers_url": "https://www.grammarly.com/careers",
+    "source": "inferred_pattern"
+  },
+  "graviton": {
+    "careers_url": "https://www.graviton.com/careers",
+    "source": "inferred_pattern"
+  },
+  "groupon": {
+    "careers_url": "https://www.groupon.com/careers",
+    "source": "inferred_pattern"
+  },
+  "groww": {
+    "careers_url": "https://www.groww.com/careers",
+    "source": "inferred_pattern"
+  },
+  "grubhub": {
+    "careers_url": "https://www.grubhub.com/careers",
+    "source": "inferred_pattern"
+  },
+  "gsa-capital": {
+    "careers_url": "https://www.gsa-capital.com/careers",
+    "source": "inferred_pattern"
+  },
+  "gsn-games": {
+    "careers_url": "https://www.gsn-games.com/careers",
+    "source": "inferred_pattern"
+  },
+  "guidewire": {
+    "careers_url": "https://www.guidewire.com/careers",
+    "source": "inferred_pattern"
+  },
+  "gusto": {
+    "careers_url": "https://www.gusto.com/careers",
+    "source": "inferred_pattern"
+  },
+  "harness": {
+    "careers_url": "https://www.harness.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hashedin": {
+    "careers_url": "https://www.hashedin.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hbo": {
+    "careers_url": "https://www.hbo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hcl": {
+    "careers_url": "https://www.hcl.com/careers",
+    "source": "inferred_pattern"
+  },
+  "helix": {
+    "careers_url": "https://www.helix.com/careers",
+    "source": "inferred_pattern"
+  },
+  "highspot": {
+    "careers_url": "https://www.highspot.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hilabs": {
+    "careers_url": "https://www.hilabs.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hive": {
+    "careers_url": "https://www.hive.com/careers",
+    "source": "inferred_pattern"
+  },
+  "honey": {
+    "careers_url": "https://www.honey.com/careers",
+    "source": "inferred_pattern"
+  },
+  "honeywell": {
+    "careers_url": "https://www.honeywell.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hopper": {
+    "careers_url": "https://www.hopper.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hotstar": {
+    "careers_url": "https://www.hotstar.com/careers",
+    "source": "inferred_pattern"
+  },
+  "houzz": {
+    "careers_url": "https://www.houzz.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hp": {
+    "careers_url": "https://www.hp.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hpe": {
+    "careers_url": "https://www.hpe.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hrt": {
+    "careers_url": "https://www.hrt.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hsbc": {
+    "careers_url": "https://www.hsbc.com/careers",
+    "source": "inferred_pattern"
+  },
+  "htc": {
+    "careers_url": "https://www.htc.com/careers",
+    "source": "inferred_pattern"
+  },
+  "huawei": {
+    "careers_url": "https://www.huawei.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hubspot": {
+    "careers_url": "https://www.hubspot.com/careers",
+    "source": "inferred_pattern"
+  },
+  "hulu": {
+    "careers_url": "https://www.hulu.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ibm": {
+    "careers_url": "https://www.ibm.com/careers",
+    "source": "inferred_pattern"
+  },
+  "iit-bombay": {
+    "careers_url": "https://www.iit-bombay.com/careers",
+    "source": "inferred_pattern"
+  },
+  "imc": {
+    "careers_url": "https://www.imc.com/careers",
+    "source": "inferred_pattern"
+  },
+  "impact-analytics": {
+    "careers_url": "https://www.impact-analytics.com/careers",
+    "source": "inferred_pattern"
+  },
+  "impetus": {
+    "careers_url": "https://www.impetus.com/careers",
+    "source": "inferred_pattern"
+  },
+  "increff": {
+    "careers_url": "https://www.increff.com/careers",
+    "source": "inferred_pattern"
+  },
+  "indeed": {
+    "careers_url": "https://www.indeed.com/careers",
+    "source": "inferred_pattern"
+  },
+  "info-edge": {
+    "careers_url": "https://www.info-edge.com/careers",
+    "source": "inferred_pattern"
+  },
+  "informatica": {
+    "careers_url": "https://www.informatica.com/careers",
+    "source": "inferred_pattern"
+  },
+  "infosys": {
+    "careers_url": "https://www.infosys.com/careers",
+    "source": "inferred_pattern"
+  },
+  "inmobi": {
+    "careers_url": "https://www.inmobi.com/careers",
+    "source": "inferred_pattern"
+  },
+  "innovaccer": {
+    "careers_url": "https://www.innovaccer.com/careers",
+    "source": "inferred_pattern"
+  },
+  "instabase": {
+    "careers_url": "https://www.instabase.com/careers",
+    "source": "inferred_pattern"
+  },
+  "instacart": {
+    "careers_url": "https://www.instacart.com/careers",
+    "source": "inferred_pattern"
+  },
+  "intel": {
+    "careers_url": "https://jobs.intel.com/",
+    "source": "verified_known"
+  },
+  "interactive-brokers": {
+    "careers_url": "https://www.interactive-brokers.com/careers",
+    "source": "inferred_pattern"
+  },
+  "intercom": {
+    "careers_url": "https://www.intercom.com/careers",
+    "source": "inferred_pattern"
+  },
+  "intuit": {
+    "careers_url": "https://www.intuit.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ivp": {
+    "careers_url": "https://www.ivp.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ixigo": {
+    "careers_url": "https://www.ixigo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ixl": {
+    "careers_url": "https://www.ixl.com/careers",
+    "source": "inferred_pattern"
+  },
+  "jane-street": {
+    "careers_url": "https://www.jane-street.com/careers",
+    "source": "inferred_pattern"
+  },
+  "jd": {
+    "careers_url": "https://www.jd.com/careers",
+    "source": "inferred_pattern"
+  },
+  "jeavio": {
+    "careers_url": "https://www.jeavio.com/careers",
+    "source": "inferred_pattern"
+  },
+  "jingchi": {
+    "careers_url": "https://www.jingchi.com/careers",
+    "source": "inferred_pattern"
+  },
+  "jio": {
+    "careers_url": "https://www.jio.com/careers",
+    "source": "inferred_pattern"
+  },
+  "josh-technology": {
+    "careers_url": "https://www.josh-technology.com/careers",
+    "source": "inferred_pattern"
+  },
+  "jpmorgan": {
+    "careers_url": "https://www.jpmorgan.com/careers",
+    "source": "inferred_pattern"
+  },
+  "jtg": {
+    "careers_url": "https://www.jtg.com/careers",
+    "source": "inferred_pattern"
+  },
+  "jump-trading": {
+    "careers_url": "https://www.jump-trading.com/careers",
+    "source": "inferred_pattern"
+  },
+  "juspay": {
+    "careers_url": "https://www.juspay.com/careers",
+    "source": "inferred_pattern"
+  },
+  "kakao": {
+    "careers_url": "https://www.kakao.com/careers",
+    "source": "inferred_pattern"
+  },
+  "karat": {
+    "careers_url": "https://www.karat.com/careers",
+    "source": "inferred_pattern"
+  },
+  "kickdrum": {
+    "careers_url": "https://www.kickdrum.com/careers",
+    "source": "inferred_pattern"
+  },
+  "kla": {
+    "careers_url": "https://www.kla.com/careers",
+    "source": "inferred_pattern"
+  },
+  "kla-tencor": {
+    "careers_url": "https://www.kla-tencor.com/careers",
+    "source": "inferred_pattern"
+  },
+  "kotak-mahindra-bank": {
+    "careers_url": "https://www.kotak-mahindra-bank.com/careers",
+    "source": "inferred_pattern"
+  },
+  "kpmg": {
+    "careers_url": "https://www.kpmg.com/careers",
+    "source": "inferred_pattern"
+  },
+  "larsen-toubro": {
+    "careers_url": "https://www.larsen-toubro.com/careers",
+    "source": "inferred_pattern"
+  },
+  "leap-motion": {
+    "careers_url": "https://www.leap-motion.com/careers",
+    "source": "inferred_pattern"
+  },
+  "lendingkart": {
+    "careers_url": "https://www.lendingkart.com/careers",
+    "source": "inferred_pattern"
+  },
+  "lenskart": {
+    "careers_url": "https://www.lenskart.com/careers",
+    "source": "inferred_pattern"
+  },
+  "lg-electronics": {
+    "careers_url": "https://www.lg-electronics.com/careers",
+    "source": "inferred_pattern"
+  },
+  "liberty-mutual": {
+    "careers_url": "https://www.liberty-mutual.com/careers",
+    "source": "inferred_pattern"
+  },
+  "liftoff": {
+    "careers_url": "https://www.liftoff.com/careers",
+    "source": "inferred_pattern"
+  },
+  "lime": {
+    "careers_url": "https://www.lime.com/careers",
+    "source": "inferred_pattern"
+  },
+  "line": {
+    "careers_url": "https://www.line.com/careers",
+    "source": "inferred_pattern"
+  },
+  "linkedin": {
+    "careers_url": "https://www.linkedin.com/careers",
+    "source": "inferred_pattern"
+  },
+  "liveramp": {
+    "careers_url": "https://www.liveramp.com/careers",
+    "source": "inferred_pattern"
+  },
+  "livspace": {
+    "careers_url": "https://www.livspace.com/careers",
+    "source": "inferred_pattern"
+  },
+  "lowe": {
+    "careers_url": "https://www.lowe.com/careers",
+    "source": "inferred_pattern"
+  },
+  "lti": {
+    "careers_url": "https://www.lti.com/careers",
+    "source": "inferred_pattern"
+  },
+  "lucid": {
+    "careers_url": "https://www.lucid.com/careers",
+    "source": "inferred_pattern"
+  },
+  "luxoft": {
+    "careers_url": "https://www.luxoft.com/careers",
+    "source": "inferred_pattern"
+  },
+  "lyft": {
+    "careers_url": "https://www.lyft.com/careers",
+    "source": "verified_known"
+  },
+  "machine-zone": {
+    "careers_url": "https://www.machine-zone.com/careers",
+    "source": "inferred_pattern"
+  },
+  "machinezone": {
+    "careers_url": "https://www.machinezone.com/careers",
+    "source": "inferred_pattern"
+  },
+  "maersk": {
+    "careers_url": "https://www.maersk.com/careers",
+    "source": "inferred_pattern"
+  },
+  "makemytrip": {
+    "careers_url": "https://www.makemytrip.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mapbox": {
+    "careers_url": "https://www.mapbox.com/careers",
+    "source": "inferred_pattern"
+  },
+  "maq-software": {
+    "careers_url": "https://www.maq-software.com/careers",
+    "source": "inferred_pattern"
+  },
+  "marqeta": {
+    "careers_url": "https://www.marqeta.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mastercard": {
+    "careers_url": "https://www.mastercard.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mathworks": {
+    "careers_url": "https://www.mathworks.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mcafee": {
+    "careers_url": "https://www.mcafee.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mcdonalds": {
+    "careers_url": "https://www.mcdonalds.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mckinsey": {
+    "careers_url": "https://www.mckinsey.com/careers",
+    "source": "inferred_pattern"
+  },
+  "medianet": {
+    "careers_url": "https://www.medianet.com/careers",
+    "source": "inferred_pattern"
+  },
+  "meesho": {
+    "careers_url": "https://www.meesho.com/careers",
+    "source": "inferred_pattern"
+  },
+  "meituan": {
+    "careers_url": "https://www.meituan.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mercari": {
+    "careers_url": "https://www.mercari.com/careers",
+    "source": "inferred_pattern"
+  },
+  "meta": {
+    "careers_url": "https://www.metacareers.com/",
+    "source": "verified_known"
+  },
+  "micro1": {
+    "careers_url": "https://www.micro1.com/careers",
+    "source": "inferred_pattern"
+  },
+  "microsoft": {
+    "careers_url": "https://careers.microsoft.com/",
+    "source": "verified_known"
+  },
+  "microstrategy": {
+    "careers_url": "https://www.microstrategy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "millennium": {
+    "careers_url": "https://www.millennium.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mindtickle": {
+    "careers_url": "https://www.mindtickle.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mindtree": {
+    "careers_url": "https://www.mindtree.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mishipay": {
+    "careers_url": "https://www.mishipay.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mitsogo": {
+    "careers_url": "https://www.mitsogo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mixpanel": {
+    "careers_url": "https://www.mixpanel.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mobileye": {
+    "careers_url": "https://www.mobileye.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mobisy": {
+    "careers_url": "https://www.mobisy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "moengage": {
+    "careers_url": "https://www.moengage.com/careers",
+    "source": "inferred_pattern"
+  },
+  "moloco": {
+    "careers_url": "https://www.moloco.com/careers",
+    "source": "inferred_pattern"
+  },
+  "moneylion": {
+    "careers_url": "https://www.moneylion.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mongodb": {
+    "careers_url": "https://www.mongodb.com/careers",
+    "source": "inferred_pattern"
+  },
+  "morgan-stanley": {
+    "careers_url": "https://www.morgan-stanley.com/careers",
+    "source": "inferred_pattern"
+  },
+  "motive": {
+    "careers_url": "https://www.motive.com/careers",
+    "source": "inferred_pattern"
+  },
+  "moveworks": {
+    "careers_url": "https://www.moveworks.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mphasis": {
+    "careers_url": "https://www.mphasis.com/careers",
+    "source": "inferred_pattern"
+  },
+  "msci": {
+    "careers_url": "https://www.msci.com/careers",
+    "source": "inferred_pattern"
+  },
+  "murex": {
+    "careers_url": "https://www.murex.com/careers",
+    "source": "inferred_pattern"
+  },
+  "mykaarma": {
+    "careers_url": "https://www.mykaarma.com/careers",
+    "source": "inferred_pattern"
+  },
+  "myntra": {
+    "careers_url": "https://www.myntra.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nagarro": {
+    "careers_url": "https://www.nagarro.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nasdaq": {
+    "careers_url": "https://www.nasdaq.com/careers",
+    "source": "inferred_pattern"
+  },
+  "national-instruments": {
+    "careers_url": "https://www.national-instruments.com/careers",
+    "source": "inferred_pattern"
+  },
+  "national-payments-coorperation-india": {
+    "careers_url": "https://www.national-payments-coorperation-india.com/careers",
+    "source": "inferred_pattern"
+  },
+  "natwest": {
+    "careers_url": "https://www.natwest.com/careers",
+    "source": "inferred_pattern"
+  },
+  "navan": {
+    "careers_url": "https://www.navan.com/careers",
+    "source": "inferred_pattern"
+  },
+  "naver": {
+    "careers_url": "https://www.naver.com/careers",
+    "source": "inferred_pattern"
+  },
+  "navi": {
+    "careers_url": "https://www.navi.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ncr": {
+    "careers_url": "https://www.ncr.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nerdwallet": {
+    "careers_url": "https://www.nerdwallet.com/careers",
+    "source": "inferred_pattern"
+  },
+  "netapp": {
+    "careers_url": "https://www.netapp.com/careers",
+    "source": "inferred_pattern"
+  },
+  "netcracker-technology": {
+    "careers_url": "https://www.netcracker-technology.com/careers",
+    "source": "inferred_pattern"
+  },
+  "netease": {
+    "careers_url": "https://www.netease.com/careers",
+    "source": "inferred_pattern"
+  },
+  "netflix": {
+    "careers_url": "https://jobs.netflix.com/",
+    "source": "verified_known"
+  },
+  "netskope": {
+    "careers_url": "https://www.netskope.com/careers",
+    "source": "inferred_pattern"
+  },
+  "netsuite": {
+    "careers_url": "https://www.netsuite.com/careers",
+    "source": "inferred_pattern"
+  },
+  "newsbreak": {
+    "careers_url": "https://www.newsbreak.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nextdoor": {
+    "careers_url": "https://www.nextdoor.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nextjump": {
+    "careers_url": "https://www.nextjump.com/careers",
+    "source": "inferred_pattern"
+  },
+  "niantic": {
+    "careers_url": "https://www.niantic.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nielsen": {
+    "careers_url": "https://www.nielsen.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nike": {
+    "careers_url": "https://www.nike.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nokia": {
+    "careers_url": "https://www.nokia.com/careers",
+    "source": "inferred_pattern"
+  },
+  "noon": {
+    "careers_url": "https://www.noon.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nordstrom": {
+    "careers_url": "https://www.nordstrom.com/careers",
+    "source": "inferred_pattern"
+  },
+  "notion": {
+    "careers_url": "https://www.notion.so/careers",
+    "source": "verified_known"
+  },
+  "npci": {
+    "careers_url": "https://www.npci.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nuro": {
+    "careers_url": "https://www.nuro.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nutanix": {
+    "careers_url": "https://www.nutanix.com/careers",
+    "source": "inferred_pattern"
+  },
+  "nvidia": {
+    "careers_url": "https://www.nvidia.com/en-us/about-nvidia/careers/",
+    "source": "verified_known"
+  },
+  "nykaa": {
+    "careers_url": "https://www.nykaa.com/careers",
+    "source": "inferred_pattern"
+  },
+  "observeai": {
+    "careers_url": "https://www.observeai.com/careers",
+    "source": "inferred_pattern"
+  },
+  "odoo": {
+    "careers_url": "https://www.odoo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "okta": {
+    "careers_url": "https://www.okta.com/company/careers/",
+    "source": "verified_known"
+  },
+  "okx": {
+    "careers_url": "https://www.okx.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ola": {
+    "careers_url": "https://www.ola.com/careers",
+    "source": "inferred_pattern"
+  },
+  "olx": {
+    "careers_url": "https://www.olx.com/careers",
+    "source": "inferred_pattern"
+  },
+  "openai": {
+    "careers_url": "https://openai.com/careers/",
+    "source": "verified_known"
+  },
+  "opentext": {
+    "careers_url": "https://www.opentext.com/careers",
+    "source": "inferred_pattern"
+  },
+  "oppo": {
+    "careers_url": "https://www.oppo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "optiver": {
+    "careers_url": "https://www.optiver.com/careers",
+    "source": "inferred_pattern"
+  },
+  "optum": {
+    "careers_url": "https://www.optum.com/careers",
+    "source": "inferred_pattern"
+  },
+  "oracle": {
+    "careers_url": "https://careers.oracle.com/",
+    "source": "verified_known"
+  },
+  "oscar-health": {
+    "careers_url": "https://www.oscar-health.com/careers",
+    "source": "inferred_pattern"
+  },
+  "otterai": {
+    "careers_url": "https://www.otterai.com/careers",
+    "source": "inferred_pattern"
+  },
+  "oyo": {
+    "careers_url": "https://www.oyo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ozon": {
+    "careers_url": "https://www.ozon.com/careers",
+    "source": "inferred_pattern"
+  },
+  "palantir": {
+    "careers_url": "https://www.palantir.com/careers",
+    "source": "inferred_pattern"
+  },
+  "palo-alto-networks": {
+    "careers_url": "https://www.palo-alto-networks.com/careers",
+    "source": "inferred_pattern"
+  },
+  "park": {
+    "careers_url": "https://www.park.com/careers",
+    "source": "inferred_pattern"
+  },
+  "patreon": {
+    "careers_url": "https://www.patreon.com/careers",
+    "source": "inferred_pattern"
+  },
+  "paycom": {
+    "careers_url": "https://www.paycom.com/careers",
+    "source": "inferred_pattern"
+  },
+  "paypal": {
+    "careers_url": "https://www.paypal.com/us/webapps/mpp/jobs",
+    "source": "verified_known"
+  },
+  "paypay": {
+    "careers_url": "https://www.paypay.com/careers",
+    "source": "inferred_pattern"
+  },
+  "paytm": {
+    "careers_url": "https://www.paytm.com/careers",
+    "source": "inferred_pattern"
+  },
+  "payu": {
+    "careers_url": "https://www.payu.com/careers",
+    "source": "inferred_pattern"
+  },
+  "peak6": {
+    "careers_url": "https://www.peak6.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pega": {
+    "careers_url": "https://www.pega.com/careers",
+    "source": "inferred_pattern"
+  },
+  "peloton": {
+    "careers_url": "https://www.peloton.com/careers",
+    "source": "inferred_pattern"
+  },
+  "persistent-systems": {
+    "careers_url": "https://www.persistent-systems.com/careers",
+    "source": "inferred_pattern"
+  },
+  "philips": {
+    "careers_url": "https://www.philips.com/careers",
+    "source": "inferred_pattern"
+  },
+  "phonepe": {
+    "careers_url": "https://www.phonepe.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pickrr": {
+    "careers_url": "https://www.pickrr.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pinterest": {
+    "careers_url": "https://www.pinterest.com/careers",
+    "source": "inferred_pattern"
+  },
+  "plaid": {
+    "careers_url": "https://www.plaid.com/careers",
+    "source": "inferred_pattern"
+  },
+  "playsimple": {
+    "careers_url": "https://www.playsimple.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pocket-gems": {
+    "careers_url": "https://www.pocket-gems.com/careers",
+    "source": "inferred_pattern"
+  },
+  "point72": {
+    "careers_url": "https://www.point72.com/careers",
+    "source": "inferred_pattern"
+  },
+  "polar": {
+    "careers_url": "https://www.polar.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ponyai": {
+    "careers_url": "https://www.ponyai.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pornhub": {
+    "careers_url": "https://www.pornhub.com/careers",
+    "source": "inferred_pattern"
+  },
+  "porter": {
+    "careers_url": "https://www.porter.com/careers",
+    "source": "inferred_pattern"
+  },
+  "poshmark": {
+    "careers_url": "https://www.poshmark.com/careers",
+    "source": "inferred_pattern"
+  },
+  "postman": {
+    "careers_url": "https://www.postman.com/careers",
+    "source": "inferred_pattern"
+  },
+  "postmates": {
+    "careers_url": "https://www.postmates.com/careers",
+    "source": "inferred_pattern"
+  },
+  "poynt": {
+    "careers_url": "https://www.poynt.com/careers",
+    "source": "inferred_pattern"
+  },
+  "practo": {
+    "careers_url": "https://www.practo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "publicis-sapient": {
+    "careers_url": "https://www.publicis-sapient.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pubmatic": {
+    "careers_url": "https://www.pubmatic.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pure": {
+    "careers_url": "https://www.pure.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pure-storage": {
+    "careers_url": "https://www.pure-storage.com/careers",
+    "source": "inferred_pattern"
+  },
+  "purplle": {
+    "careers_url": "https://www.purplle.com/careers",
+    "source": "inferred_pattern"
+  },
+  "pwc": {
+    "careers_url": "https://www.pwc.com/careers",
+    "source": "inferred_pattern"
+  },
+  "qualcomm": {
+    "careers_url": "https://www.qualcomm.com/careers",
+    "source": "inferred_pattern"
+  },
+  "qualtrics": {
+    "careers_url": "https://www.qualtrics.com/careers",
+    "source": "inferred_pattern"
+  },
+  "qualys": {
+    "careers_url": "https://www.qualys.com/careers",
+    "source": "inferred_pattern"
+  },
+  "quantcast": {
+    "careers_url": "https://www.quantcast.com/careers",
+    "source": "inferred_pattern"
+  },
+  "quantiphi": {
+    "careers_url": "https://www.quantiphi.com/careers",
+    "source": "inferred_pattern"
+  },
+  "quince": {
+    "careers_url": "https://www.quince.com/careers",
+    "source": "inferred_pattern"
+  },
+  "quora": {
+    "careers_url": "https://www.quora.com/careers",
+    "source": "inferred_pattern"
+  },
+  "rackspace": {
+    "careers_url": "https://www.rackspace.com/careers",
+    "source": "inferred_pattern"
+  },
+  "radius": {
+    "careers_url": "https://www.radius.com/careers",
+    "source": "inferred_pattern"
+  },
+  "rakuten": {
+    "careers_url": "https://www.rakuten.com/careers",
+    "source": "inferred_pattern"
+  },
+  "rally-health": {
+    "careers_url": "https://www.rally-health.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ramp-2": {
+    "careers_url": "https://www.ramp-2.com/careers",
+    "source": "inferred_pattern"
+  },
+  "razorpay": {
+    "careers_url": "https://www.razorpay.com/careers",
+    "source": "inferred_pattern"
+  },
+  "rbc": {
+    "careers_url": "https://www.rbc.com/careers",
+    "source": "inferred_pattern"
+  },
+  "redbus": {
+    "careers_url": "https://www.redbus.com/careers",
+    "source": "inferred_pattern"
+  },
+  "reddit": {
+    "careers_url": "https://www.reddit.com/careers",
+    "source": "inferred_pattern"
+  },
+  "redfin": {
+    "careers_url": "https://www.redfin.com/careers",
+    "source": "inferred_pattern"
+  },
+  "reliance-retails": {
+    "careers_url": "https://www.reliance-retails.com/careers",
+    "source": "inferred_pattern"
+  },
+  "remitly": {
+    "careers_url": "https://www.remitly.com/careers",
+    "source": "inferred_pattern"
+  },
+  "retailmenot": {
+    "careers_url": "https://www.retailmenot.com/careers",
+    "source": "inferred_pattern"
+  },
+  "revolut": {
+    "careers_url": "https://www.revolut.com/careers",
+    "source": "inferred_pattern"
+  },
+  "riot-games": {
+    "careers_url": "https://www.riot-games.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ripple": {
+    "careers_url": "https://www.ripple.com/careers",
+    "source": "inferred_pattern"
+  },
+  "rippling": {
+    "careers_url": "https://www.rippling.com/careers",
+    "source": "inferred_pattern"
+  },
+  "rivian": {
+    "careers_url": "https://www.rivian.com/careers",
+    "source": "inferred_pattern"
+  },
+  "robinhood": {
+    "careers_url": "https://www.robinhood.com/careers",
+    "source": "inferred_pattern"
+  },
+  "roblox": {
+    "careers_url": "https://careers.roblox.com/",
+    "source": "verified_known"
+  },
+  "rokt": {
+    "careers_url": "https://www.rokt.com/careers",
+    "source": "inferred_pattern"
+  },
+  "roku": {
+    "careers_url": "https://www.roku.com/careers",
+    "source": "inferred_pattern"
+  },
+  "rubrik": {
+    "careers_url": "https://www.rubrik.com/careers",
+    "source": "inferred_pattern"
+  },
+  "salesforce": {
+    "careers_url": "https://www.salesforce.com/company/careers/",
+    "source": "verified_known"
+  },
+  "sambanova": {
+    "careers_url": "https://www.sambanova.com/careers",
+    "source": "inferred_pattern"
+  },
+  "samsara": {
+    "careers_url": "https://www.samsara.com/careers",
+    "source": "inferred_pattern"
+  },
+  "samsung": {
+    "careers_url": "https://www.samsung.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sap": {
+    "careers_url": "https://www.sap.com/careers",
+    "source": "inferred_pattern"
+  },
+  "scale-ai": {
+    "careers_url": "https://www.scale-ai.com/careers",
+    "source": "inferred_pattern"
+  },
+  "scaler": {
+    "careers_url": "https://www.scaler.com/careers",
+    "source": "inferred_pattern"
+  },
+  "schlumberger": {
+    "careers_url": "https://www.schlumberger.com/careers",
+    "source": "inferred_pattern"
+  },
+  "schneider-electric": {
+    "careers_url": "https://www.schneider-electric.com/careers",
+    "source": "inferred_pattern"
+  },
+  "schrodinger": {
+    "careers_url": "https://www.schrodinger.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sentry": {
+    "careers_url": "https://sentry.io/careers/",
+    "source": "verified_known"
+  },
+  "servicenow": {
+    "careers_url": "https://www.servicenow.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sharechat": {
+    "careers_url": "https://www.sharechat.com/careers",
+    "source": "inferred_pattern"
+  },
+  "shift-technology": {
+    "careers_url": "https://www.shift-technology.com/careers",
+    "source": "inferred_pattern"
+  },
+  "shipsy": {
+    "careers_url": "https://www.shipsy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "shopback": {
+    "careers_url": "https://www.shopback.com/careers",
+    "source": "inferred_pattern"
+  },
+  "shopee": {
+    "careers_url": "https://www.shopee.com/careers",
+    "source": "inferred_pattern"
+  },
+  "shopify": {
+    "careers_url": "https://www.shopify.com/careers",
+    "source": "verified_known"
+  },
+  "shopup": {
+    "careers_url": "https://www.shopup.com/careers",
+    "source": "inferred_pattern"
+  },
+  "siemens": {
+    "careers_url": "https://www.siemens.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sig": {
+    "careers_url": "https://www.sig.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sigmoid": {
+    "careers_url": "https://www.sigmoid.com/careers",
+    "source": "inferred_pattern"
+  },
+  "singlestore": {
+    "careers_url": "https://www.singlestore.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sixt": {
+    "careers_url": "https://www.sixt.com/careers",
+    "source": "inferred_pattern"
+  },
+  "slice": {
+    "careers_url": "https://www.slice.com/careers",
+    "source": "inferred_pattern"
+  },
+  "smartnews": {
+    "careers_url": "https://www.smartnews.com/careers",
+    "source": "inferred_pattern"
+  },
+  "smartsheet": {
+    "careers_url": "https://www.smartsheet.com/careers",
+    "source": "inferred_pattern"
+  },
+  "snapchat": {
+    "careers_url": "https://www.snapchat.com/careers",
+    "source": "inferred_pattern"
+  },
+  "snapdeal": {
+    "careers_url": "https://www.snapdeal.com/careers",
+    "source": "inferred_pattern"
+  },
+  "snowflake": {
+    "careers_url": "https://careers.snowflake.com/",
+    "source": "verified_known"
+  },
+  "societe-generale": {
+    "careers_url": "https://www.societe-generale.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sofi": {
+    "careers_url": "https://www.sofi.com/careers",
+    "source": "inferred_pattern"
+  },
+  "softwire": {
+    "careers_url": "https://www.softwire.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sonatus": {
+    "careers_url": "https://www.sonatus.com/careers",
+    "source": "inferred_pattern"
+  },
+  "sony": {
+    "careers_url": "https://www.sony.com/careers",
+    "source": "inferred_pattern"
+  },
+  "soti": {
+    "careers_url": "https://www.soti.com/careers",
+    "source": "inferred_pattern"
+  },
+  "soundhound": {
+    "careers_url": "https://www.soundhound.com/careers",
+    "source": "inferred_pattern"
+  },
+  "spacex": {
+    "careers_url": "https://www.spacex.com/careers",
+    "source": "inferred_pattern"
+  },
+  "spinny": {
+    "careers_url": "https://www.spinny.com/careers",
+    "source": "inferred_pattern"
+  },
+  "splunk": {
+    "careers_url": "https://www.splunk.com/careers",
+    "source": "inferred_pattern"
+  },
+  "spotify": {
+    "careers_url": "https://www.lifeatspotify.com/jobs",
+    "source": "verified_known"
+  },
+  "sprinklr": {
+    "careers_url": "https://www.sprinklr.com/careers",
+    "source": "inferred_pattern"
+  },
+  "square": {
+    "careers_url": "https://www.square.com/careers",
+    "source": "inferred_pattern"
+  },
+  "squarepoint-capital": {
+    "careers_url": "https://www.squarepoint-capital.com/careers",
+    "source": "inferred_pattern"
+  },
+  "squarespace": {
+    "careers_url": "https://www.squarespace.com/careers",
+    "source": "inferred_pattern"
+  },
+  "src/main/java": {
+    "careers_url": "https://www.src/main/java.com/careers",
+    "source": "inferred_pattern"
+  },
+  "stackadapt": {
+    "careers_url": "https://www.stackadapt.com/careers",
+    "source": "inferred_pattern"
+  },
+  "stackline": {
+    "careers_url": "https://www.stackline.com/careers",
+    "source": "inferred_pattern"
+  },
+  "starbucks": {
+    "careers_url": "https://www.starbucks.com/careers",
+    "source": "inferred_pattern"
+  },
+  "state-farm": {
+    "careers_url": "https://www.state-farm.com/careers",
+    "source": "inferred_pattern"
+  },
+  "strava": {
+    "careers_url": "https://www.strava.com/careers",
+    "source": "inferred_pattern"
+  },
+  "stripe": {
+    "careers_url": "https://stripe.com/jobs",
+    "source": "verified_known"
+  },
+  "sumologic": {
+    "careers_url": "https://www.sumologic.com/careers",
+    "source": "inferred_pattern"
+  },
+  "swiggy": {
+    "careers_url": "https://www.swiggy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "syfe": {
+    "careers_url": "https://www.syfe.com/careers",
+    "source": "inferred_pattern"
+  },
+  "symantec": {
+    "careers_url": "https://www.symantec.com/careers",
+    "source": "inferred_pattern"
+  },
+  "synopsys": {
+    "careers_url": "https://www.synopsys.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ta-digital": {
+    "careers_url": "https://www.ta-digital.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tableau": {
+    "careers_url": "https://www.tableau.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tanium": {
+    "careers_url": "https://www.tanium.com/careers",
+    "source": "inferred_pattern"
+  },
+  "target": {
+    "careers_url": "https://www.target.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tcs": {
+    "careers_url": "https://www.tcs.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tech-mahindra": {
+    "careers_url": "https://www.tech-mahindra.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tekion": {
+    "careers_url": "https://www.tekion.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tencent": {
+    "careers_url": "https://www.tencent.com/careers",
+    "source": "inferred_pattern"
+  },
+  "teradata": {
+    "careers_url": "https://www.teradata.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tesco": {
+    "careers_url": "https://www.tesco.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tesla": {
+    "careers_url": "https://www.tesla.com/careers",
+    "source": "inferred_pattern"
+  },
+  "texas-instruments": {
+    "careers_url": "https://www.texas-instruments.com/careers",
+    "source": "inferred_pattern"
+  },
+  "the-trade-desk": {
+    "careers_url": "https://www.the-trade-desk.com/careers",
+    "source": "inferred_pattern"
+  },
+  "thomson-reuters": {
+    "careers_url": "https://www.thomson-reuters.com/careers",
+    "source": "inferred_pattern"
+  },
+  "thoughtspot": {
+    "careers_url": "https://www.thoughtspot.com/careers",
+    "source": "inferred_pattern"
+  },
+  "thoughtworks": {
+    "careers_url": "https://www.thoughtworks.com/careers",
+    "source": "inferred_pattern"
+  },
+  "thousandeyes": {
+    "careers_url": "https://www.thousandeyes.com/careers",
+    "source": "inferred_pattern"
+  },
+  "thumbtack": {
+    "careers_url": "https://www.thumbtack.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tiaa": {
+    "careers_url": "https://www.tiaa.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tiger-analytics": {
+    "careers_url": "https://www.tiger-analytics.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tiktok": {
+    "careers_url": "https://careers.tiktok.com/",
+    "source": "verified_known"
+  },
+  "tinder": {
+    "careers_url": "https://www.tinder.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tinkoff": {
+    "careers_url": "https://www.tinkoff.com/careers",
+    "source": "inferred_pattern"
+  },
+  "toast": {
+    "careers_url": "https://www.toast.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tokopedia": {
+    "careers_url": "https://www.tokopedia.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tomtom": {
+    "careers_url": "https://www.tomtom.com/careers",
+    "source": "inferred_pattern"
+  },
+  "toptal": {
+    "careers_url": "https://www.toptal.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tower-research": {
+    "careers_url": "https://www.tower-research.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tracxn": {
+    "careers_url": "https://www.tracxn.com/careers",
+    "source": "inferred_pattern"
+  },
+  "traveloka": {
+    "careers_url": "https://www.traveloka.com/careers",
+    "source": "inferred_pattern"
+  },
+  "trend-micro": {
+    "careers_url": "https://www.trend-micro.com/careers",
+    "source": "inferred_pattern"
+  },
+  "trexquant": {
+    "careers_url": "https://www.trexquant.com/careers",
+    "source": "inferred_pattern"
+  },
+  "trilogy": {
+    "careers_url": "https://www.trilogy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tripactions": {
+    "careers_url": "https://www.tripactions.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tripadvisor": {
+    "careers_url": "https://www.tripadvisor.com/careers",
+    "source": "inferred_pattern"
+  },
+  "triplebyte": {
+    "careers_url": "https://www.triplebyte.com/careers",
+    "source": "inferred_pattern"
+  },
+  "turing": {
+    "careers_url": "https://www.turing.com/careers",
+    "source": "inferred_pattern"
+  },
+  "turvo": {
+    "careers_url": "https://www.turvo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "tusimple": {
+    "careers_url": "https://www.tusimple.com/careers",
+    "source": "inferred_pattern"
+  },
+  "twilio": {
+    "careers_url": "https://www.twilio.com/company/jobs",
+    "source": "verified_known"
+  },
+  "twitch": {
+    "careers_url": "https://www.twitch.com/careers",
+    "source": "inferred_pattern"
+  },
+  "twitter": {
+    "careers_url": "https://www.twitter.com/careers",
+    "source": "inferred_pattern"
+  },
+  "two-sigma": {
+    "careers_url": "https://www.two-sigma.com/careers",
+    "source": "inferred_pattern"
+  },
+  "uber": {
+    "careers_url": "https://www.uber.com/us/en/careers/",
+    "source": "verified_known"
+  },
+  "ubisoft": {
+    "careers_url": "https://www.ubisoft.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ubs": {
+    "careers_url": "https://www.ubs.com/careers",
+    "source": "inferred_pattern"
+  },
+  "udemy": {
+    "careers_url": "https://www.udemy.com/careers",
+    "source": "inferred_pattern"
+  },
+  "uipath": {
+    "careers_url": "https://www.uipath.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ukg": {
+    "careers_url": "https://www.ukg.com/careers",
+    "source": "inferred_pattern"
+  },
+  "unbxd": {
+    "careers_url": "https://www.unbxd.com/careers",
+    "source": "inferred_pattern"
+  },
+  "unity": {
+    "careers_url": "https://www.unity.com/careers",
+    "source": "inferred_pattern"
+  },
+  "unstop": {
+    "careers_url": "https://www.unstop.com/careers",
+    "source": "inferred_pattern"
+  },
+  "upstart": {
+    "careers_url": "https://www.upstart.com/careers",
+    "source": "inferred_pattern"
+  },
+  "urban-company": {
+    "careers_url": "https://www.urban-company.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ust": {
+    "careers_url": "https://www.ust.com/careers",
+    "source": "inferred_pattern"
+  },
+  "valve": {
+    "careers_url": "https://www.valve.com/careers",
+    "source": "inferred_pattern"
+  },
+  "veeva": {
+    "careers_url": "https://www.veeva.com/careers",
+    "source": "inferred_pattern"
+  },
+  "verily": {
+    "careers_url": "https://www.verily.com/careers",
+    "source": "inferred_pattern"
+  },
+  "veritas": {
+    "careers_url": "https://www.veritas.com/careers",
+    "source": "inferred_pattern"
+  },
+  "verizon": {
+    "careers_url": "https://www.verizon.com/careers",
+    "source": "inferred_pattern"
+  },
+  "verkada": {
+    "careers_url": "https://www.verkada.com/careers",
+    "source": "inferred_pattern"
+  },
+  "viasat": {
+    "careers_url": "https://www.viasat.com/careers",
+    "source": "inferred_pattern"
+  },
+  "vimeo": {
+    "careers_url": "https://www.vimeo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "virtu": {
+    "careers_url": "https://www.virtu.com/careers",
+    "source": "inferred_pattern"
+  },
+  "virtusa": {
+    "careers_url": "https://www.virtusa.com/careers",
+    "source": "inferred_pattern"
+  },
+  "visa": {
+    "careers_url": "https://www.visa.com/careers",
+    "source": "inferred_pattern"
+  },
+  "vk": {
+    "careers_url": "https://www.vk.com/careers",
+    "source": "inferred_pattern"
+  },
+  "vmware": {
+    "careers_url": "https://www.vmware.com/careers",
+    "source": "inferred_pattern"
+  },
+  "walmart-labs": {
+    "careers_url": "https://careers.walmart.com/",
+    "source": "verified_known"
+  },
+  "warnermedia": {
+    "careers_url": "https://www.warnermedia.com/careers",
+    "source": "inferred_pattern"
+  },
+  "wayfair": {
+    "careers_url": "https://www.wayfair.com/careers",
+    "source": "inferred_pattern"
+  },
+  "waymo": {
+    "careers_url": "https://waymo.com/careers/",
+    "source": "verified_known"
+  },
+  "wayve": {
+    "careers_url": "https://www.wayve.com/careers",
+    "source": "inferred_pattern"
+  },
+  "wealthfront": {
+    "careers_url": "https://www.wealthfront.com/careers",
+    "source": "inferred_pattern"
+  },
+  "wells-fargo": {
+    "careers_url": "https://www.wells-fargo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "weride": {
+    "careers_url": "https://www.weride.com/careers",
+    "source": "inferred_pattern"
+  },
+  "western-digital": {
+    "careers_url": "https://www.western-digital.com/careers",
+    "source": "inferred_pattern"
+  },
+  "whatfix": {
+    "careers_url": "https://www.whatfix.com/careers",
+    "source": "inferred_pattern"
+  },
+  "whatnot": {
+    "careers_url": "https://www.whatnot.com/careers",
+    "source": "inferred_pattern"
+  },
+  "winzo": {
+    "careers_url": "https://www.winzo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "wipro": {
+    "careers_url": "https://www.wipro.com/careers",
+    "source": "inferred_pattern"
+  },
+  "wise": {
+    "careers_url": "https://www.wise.com/careers",
+    "source": "inferred_pattern"
+  },
+  "wish": {
+    "careers_url": "https://www.wish.com/careers",
+    "source": "inferred_pattern"
+  },
+  "wissen": {
+    "careers_url": "https://www.wissen.com/careers",
+    "source": "inferred_pattern"
+  },
+  "wix": {
+    "careers_url": "https://www.wix.com/careers",
+    "source": "inferred_pattern"
+  },
+  "workday": {
+    "careers_url": "https://www.workday.com/en-us/company/careers.html",
+    "source": "verified_known"
+  },
+  "works-applications": {
+    "careers_url": "https://www.works-applications.com/careers",
+    "source": "inferred_pattern"
+  },
+  "worldquant": {
+    "careers_url": "https://www.worldquant.com/careers",
+    "source": "inferred_pattern"
+  },
+  "woven-by-toyota": {
+    "careers_url": "https://www.woven-by-toyota.com/careers",
+    "source": "inferred_pattern"
+  },
+  "xing": {
+    "careers_url": "https://www.xing.com/careers",
+    "source": "inferred_pattern"
+  },
+  "yahoo": {
+    "careers_url": "https://www.yahoo.com/careers",
+    "source": "inferred_pattern"
+  },
+  "yandex": {
+    "careers_url": "https://www.yandex.com/careers",
+    "source": "inferred_pattern"
+  },
+  "yatra": {
+    "careers_url": "https://www.yatra.com/careers",
+    "source": "inferred_pattern"
+  },
+  "yelp": {
+    "careers_url": "https://www.yelp.com/careers",
+    "source": "inferred_pattern"
+  },
+  "yugabyte": {
+    "careers_url": "https://www.yugabyte.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zalando": {
+    "careers_url": "https://www.zalando.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zappos": {
+    "careers_url": "https://www.zappos.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zemoso": {
+    "careers_url": "https://www.zemoso.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zendesk": {
+    "careers_url": "https://www.zendesk.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zenefits": {
+    "careers_url": "https://www.zenefits.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zepto": {
+    "careers_url": "https://www.zepto.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zeta": {
+    "careers_url": "https://www.zeta.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zeta-suite": {
+    "careers_url": "https://www.zeta-suite.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zillow": {
+    "careers_url": "https://www.zillow.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zip": {
+    "careers_url": "https://www.zip.com/careers",
+    "source": "inferred_pattern"
+  },
+  "ziprecruiter": {
+    "careers_url": "https://www.ziprecruiter.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zluri": {
+    "careers_url": "https://www.zluri.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zocdoc": {
+    "careers_url": "https://www.zocdoc.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zoho": {
+    "careers_url": "https://www.zoho.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zomato": {
+    "careers_url": "https://www.zomato.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zoom": {
+    "careers_url": "https://careers.zoom.us/",
+    "source": "verified_known"
+  },
+  "zoox": {
+    "careers_url": "https://www.zoox.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zopsmart": {
+    "careers_url": "https://www.zopsmart.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zs-associates": {
+    "careers_url": "https://www.zs-associates.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zscaler": {
+    "careers_url": "https://careers.zscaler.com/",
+    "source": "verified_known"
+  },
+  "zulily": {
+    "careers_url": "https://www.zulily.com/careers",
+    "source": "inferred_pattern"
+  },
+  "zynga": {
+    "careers_url": "https://www.zynga.com/careers",
+    "source": "inferred_pattern"
+  }
+}

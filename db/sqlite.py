@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL", "jobhuntai.db")
+DATABASE_URL = os.getenv("SQLITE_DB_PATH", "jobhuntai.db")
 DB_PATH = Path(DATABASE_URL)
 
 
@@ -32,11 +32,14 @@ DB_PATH = Path(DATABASE_URL)
 # --------------------------------------------------------------------------- #
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS users (
-    user_id TEXT PRIMARY KEY,
-    username TEXT UNIQUE NOT NULL,
-    email TEXT UNIQUE NOT NULL,
-    hashed_password TEXT NOT NULL,
-    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    user_id         TEXT PRIMARY KEY,
+    username        TEXT UNIQUE NOT NULL,
+    email           TEXT UNIQUE NOT NULL,
+    hashed_password TEXT,
+    oauth_provider  TEXT,
+    display_name    TEXT,
+    picture_url     TEXT,
+    created_at      DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS sessions (
@@ -52,6 +55,7 @@ CREATE TABLE IF NOT EXISTS messages (
     session_id TEXT NOT NULL REFERENCES sessions(session_id),
     role TEXT NOT NULL,
     content TEXT NOT NULL,
+    step_uuid TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -85,6 +89,14 @@ CREATE TABLE IF NOT EXISTS applications (
     notes TEXT,
     next_action TEXT,
     next_action_date DATETIME
+);
+
+CREATE TABLE IF NOT EXISTS workday_credentials (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id TEXT NOT NULL UNIQUE REFERENCES users(user_id),
+    email TEXT NOT NULL,
+    password_enc TEXT NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 """
 
@@ -125,15 +137,54 @@ def _row_to_dict(row: Optional[sqlite3.Row]) -> Optional[dict[str, Any]]:
 # --------------------------------------------------------------------------- #
 # Users
 # --------------------------------------------------------------------------- #
-def create_user(username: str, email: str, hashed_password: str) -> dict[str, Any]:
+def create_user(
+    username: str,
+    email: str,
+    hashed_password: Optional[str] = None,
+    *,
+    oauth_provider: Optional[str] = None,
+    display_name: Optional[str] = None,
+    picture_url: Optional[str] = None,
+) -> dict[str, Any]:
     user_id = str(uuid.uuid4())
     with get_conn() as conn:
         conn.execute(
-            "INSERT INTO users (user_id, username, email, hashed_password) "
-            "VALUES (?, ?, ?, ?)",
-            (user_id, username, email, hashed_password),
+            "INSERT INTO users "
+            "(user_id, username, email, hashed_password, oauth_provider, display_name, picture_url) "
+            "VALUES (?, ?, ?, ?, ?, ?, ?)",
+            (user_id, username, email, hashed_password, oauth_provider, display_name, picture_url),
         )
     return get_user_by_id(user_id)
+
+
+def get_or_create_oauth_user(
+    email: str,
+    name: str,
+    provider: Optional[str] = None,
+    picture_url: Optional[str] = None,
+) -> dict[str, Any]:
+    """Look up a user by email; create one if not found (OAuth login path).
+    On subsequent logins, refresh display_name and picture_url from the provider."""
+    user = get_user_by_email(email)
+    if user:
+        with get_conn() as conn:
+            conn.execute(
+                "UPDATE users SET display_name=?, picture_url=?, oauth_provider=? WHERE email=?",
+                (name or user.get("display_name"), picture_url or user.get("picture_url"), provider or user.get("oauth_provider"), email),
+            )
+        return get_user_by_email(email)
+    base = email.split("@")[0]
+    username = base
+    i = 1
+    while get_user_by_username(username):
+        username = f"{base}{i}"
+        i += 1
+    return create_user(
+        username, email,
+        oauth_provider=provider,
+        display_name=name,
+        picture_url=picture_url,
+    )
 
 
 def get_user_by_username(username: str) -> Optional[dict[str, Any]]:
@@ -163,11 +214,11 @@ def get_user_by_email(email: str) -> Optional[dict[str, Any]]:
 # --------------------------------------------------------------------------- #
 # Sessions
 # --------------------------------------------------------------------------- #
-def create_session(user_id: str, title: Optional[str] = None) -> dict[str, Any]:
-    session_id = str(uuid.uuid4())
+def create_session(user_id: str, title: Optional[str] = None, session_id: Optional[str] = None) -> dict[str, Any]:
+    session_id = session_id or str(uuid.uuid4())
     with get_conn() as conn:
         conn.execute(
-            "INSERT INTO sessions (session_id, user_id, title) VALUES (?, ?, ?)",
+            "INSERT OR IGNORE INTO sessions (session_id, user_id, title) VALUES (?, ?, ?)",
             (session_id, user_id, title or "New session"),
         )
     return get_session(session_id)
@@ -225,6 +276,31 @@ def add_message(session_id: str, role: str, content: str) -> int:
             (session_id, role, content),
         )
         return cur.lastrowid
+
+
+def upsert_assistant_step(session_id: str, step_uuid: str, content: str) -> None:
+    """Insert or update an assistant message identified by Chainlit's step UUID."""
+    with get_conn() as conn:
+        # Lazily add step_uuid column if it doesn't exist yet
+        cols = {r[1] for r in conn.execute("PRAGMA table_info(messages)").fetchall()}
+        if "step_uuid" not in cols:
+            conn.execute("ALTER TABLE messages ADD COLUMN step_uuid TEXT")
+
+        if step_uuid:
+            existing = conn.execute(
+                "SELECT id FROM messages WHERE session_id=? AND step_uuid=?",
+                (session_id, step_uuid),
+            ).fetchone()
+            if existing:
+                conn.execute(
+                    "UPDATE messages SET content=? WHERE id=?",
+                    (content, existing["id"]),
+                )
+                return
+        conn.execute(
+            "INSERT INTO messages (session_id, role, content, step_uuid) VALUES (?, 'assistant', ?, ?)",
+            (session_id, content, step_uuid),
+        )
 
 
 def get_messages(session_id: str, limit: Optional[int] = None) -> list[dict[str, Any]]:
@@ -421,6 +497,32 @@ def update_application(
             params,
         )
     return get_application(app_id)
+
+
+# --------------------------------------------------------------------------- #
+# Workday credentials
+# --------------------------------------------------------------------------- #
+def upsert_workday_credentials(user_id: str, email: str, password: str) -> None:
+    """Store (or update) Workday login credentials for a user.
+
+    Password is stored as-is since this is a local tool. Do not use this
+    pattern in a multi-tenant production service.
+    """
+    with get_conn() as conn:
+        conn.execute(
+            "INSERT INTO workday_credentials (user_id, email, password_enc) "
+            "VALUES (?, ?, ?) ON CONFLICT(user_id) DO UPDATE SET "
+            "email=excluded.email, password_enc=excluded.password_enc",
+            (user_id, email, password),
+        )
+
+
+def get_workday_credentials(user_id: str) -> Optional[dict[str, Any]]:
+    with get_conn() as conn:
+        row = conn.execute(
+            "SELECT * FROM workday_credentials WHERE user_id = ?", (user_id,)
+        ).fetchone()
+    return _row_to_dict(row)
 
 
 if __name__ == "__main__":

@@ -34,6 +34,14 @@ job description. Rules:
 - Rewrite bullets to incorporate JD keywords ONLY where truthfully supported by \
 the existing content. Never fabricate employers, titles, dates, or achievements.
 - Tighten the summary to target the role.
+- The "skills" array MUST use grouped category strings, not individual skill names.
+  Each entry must be formatted as "Category: skill1, skill2, skill3".
+  Standard categories: Languages, Frameworks, Cloud & Infrastructure, Data & Analytics,
+  Databases, Tools & Platforms. Merge or split categories as needed to fit the candidate.
+  Example: ["Languages: Java, Python, SQL", "Frameworks: Spring Boot, FastAPI",
+            "Cloud & Infrastructure: AWS, Azure, Docker, Kubernetes",
+            "Data & Analytics: Spark, Databricks, Kafka, Airflow",
+            "Databases: MySQL, MongoDB, Redis, CosmosDB"]
 Return ONLY the tailored JSON profile object."""
 
 

@@ -43,6 +43,7 @@ def _normalize(profile: dict[str, Any]) -> dict[str, Any]:
     return {
         "contact": {
             "name": contact.get("name", ""),
+            "title": contact.get("title", ""),
             "email": contact.get("email", ""),
             "phone": contact.get("phone", ""),
             "location": contact.get("location", ""),
@@ -50,9 +51,26 @@ def _normalize(profile: dict[str, Any]) -> dict[str, Any]:
             "website": contact.get("website", ""),
         },
         "summary": profile.get("summary", ""),
-        "skills": profile.get("skills", []) or [],
+        "skills": _normalize_skills(profile.get("skills", []) or []),
         "experience": profile.get("experience", []) or [],
         "education": profile.get("education", []) or [],
         "certifications": profile.get("certifications", []) or [],
         "projects": profile.get("projects", []) or [],
     }
+
+
+def _normalize_skills(skills: list) -> list[str]:
+    """Ensure skills are in grouped 'Category: items' format.
+
+    If the stored profile has flat individual skill names (old format), groups
+    them into a single 'Skills' entry so the template renders them inline.
+    If already grouped (any entry contains ':'), pass through as-is.
+    """
+    if not skills:
+        return []
+    str_skills = [str(s) for s in skills if s]
+    # Already grouped — at least one entry has a colon separator
+    if any(":" in s for s in str_skills):
+        return str_skills
+    # Flat list — wrap as a single comma-separated line so it renders cleanly
+    return ["Skills: " + ", ".join(str_skills)]
